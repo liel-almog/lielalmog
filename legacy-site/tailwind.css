@@ -1,8 +1,0 @@
-@layer theme, base, components, utilities;
-
-@import "tailwindcss/theme.css" layer(theme);
-@import "./styles.css" layer(components);
-@import "tailwindcss/utilities.css" layer(utilities) source("./");
-
-/* Keep the independent Astro app out of the legacy utility scan. */
-@source not "./astro";
