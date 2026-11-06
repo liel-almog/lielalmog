@@ -1,4 +1,5 @@
 import { site } from './site';
+import { featuredProject } from './projects';
 
 export const hero = {
   eyebrow: 'Senior Software Engineer · Systems thinker · End-to-end owner',
@@ -9,7 +10,7 @@ export const hero = {
   actions: [
     { label: 'See the work', href: '#experience', variant: 'primary', arrow: '↓' },
     { label: 'View resume', href: site.resume, variant: 'secondary', arrow: '↗' },
-    { label: 'Explore the systems', href: '#projects', variant: 'secondary', arrow: '↓' },
+    { label: 'Try Algo Studio', href: featuredProject.href, variant: 'secondary', arrow: '↗' },
   ],
   capabilities: ['Backend systems', 'Cloud platforms', 'Distributed architecture', 'Complete delivery'],
 } as const;

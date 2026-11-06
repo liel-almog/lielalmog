@@ -1,4 +1,4 @@
-I have a dev server running on port 3000. You can access it at http://localhost:3000.
+I have a dev server running on port 3000. You can access it at http://localhost:4321.
 DO NOT USE YOUR OWN SERVER
 
 ## Development

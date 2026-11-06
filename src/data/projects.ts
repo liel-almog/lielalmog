@@ -25,6 +25,15 @@ export const projectsSection = {
     "I’m enthusiastic about Go (Golang), systems programming, and understanding how software works beneath the surface. These projects turn that curiosity into working systems, from kernel-level security to search algorithms and developer tools.",
 } as const;
 
+export const featuredProject = {
+  name: "Algo Studio",
+  category: "Interactive algorithm playground",
+  summary:
+    "Explore search and graph algorithms through an interactive playground built to make their behavior easier to see and understand.",
+  href: "https://algorithms.lielalmog.com/",
+  linkLabel: "Explore Algo Studio",
+} as const;
+
 export const projects = [
   {
     id: "ebpf",

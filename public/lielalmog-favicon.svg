@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Sunrise over layered hills</title>
+  <desc id="desc">Minimalist peach sun behind overlapping navy and slate blue hills, on a warm off-white rounded square.</desc>
+  <defs>
+    <clipPath id="rounded-icon">
+      <rect width="512" height="512" rx="88"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#rounded-icon)">
+    <rect width="512" height="512" fill="#FAF7F3"/>
+    <circle cx="302" cy="278" r="133" fill="#ED936C"/>
+    <path d="M0 338 C55 320 93 279 163 274 C231 267 278 311 331 329 C379 345 437 314 512 329 L512 512 L0 512 Z" fill="#1C354F"/>
+    <path d="M0 458 C88 388 154 397 220 388 C284 379 332 335 403 326 C454 319 488 332 512 340 L512 512 L0 512 Z" fill="#446A8B"/>
+  </g>
+</svg>

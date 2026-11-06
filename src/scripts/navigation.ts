@@ -21,7 +21,7 @@ export function setupNavigation(header: HTMLElement) {
       toggle.focus();
     }
   });
-  window.matchMedia('(max-width: 900px)').addEventListener('change', () => setOpen(false));
+  window.matchMedia('(max-width: 1100px)').addEventListener('change', () => setOpen(false));
 
   toggle.hidden = false;
   navigation.dataset.enhanced = '';

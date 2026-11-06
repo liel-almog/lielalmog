@@ -7,16 +7,33 @@ interface Props {
   noindex?: boolean;
 }
 
-const { title = site.title, description = site.description, noindex = true } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site);
+const { title = site.title, description = site.description, noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
+const websiteId = new URL('/#website', site.url).href;
+const personId = new URL('/#person', site.url).href;
 const person = {
-  '@context': 'https://schema.org',
   '@type': 'Person',
+  '@id': personId,
   name: site.name,
   url: site.url,
   sameAs: site.profiles.map((profile) => profile.href),
   jobTitle: ['Senior Software Engineer', 'Backend Developer'],
   homeLocation: { '@type': 'Country', name: 'Israel' },
+};
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': websiteId,
+      url: site.url,
+      name: site.name,
+      description: site.description,
+      author: { '@id': personId },
+      inLanguage: 'en',
+    },
+    person,
+  ],
 };
 ---
 
@@ -25,17 +42,18 @@ const person = {
 <title>{title}</title>
 <meta name="description" content={description} />
 <meta name="author" content={site.name} />
-<meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
+{noindex && <meta name="robots" content="noindex" />}
 <meta name="theme-color" content="#090b08" />
 <link rel="canonical" href={canonical} />
-<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/lielalmog-favicon.svg" type="image/svg+xml" />
 {site.profiles.map((profile) => <link rel="me" href={profile.href} />)}
-<meta property="og:type" content="profile" />
+<meta property="og:type" content="website" />
 <meta property="og:title" content={title} />
-<meta property="og:description" content={site.socialDescription} />
+<meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
 <meta property="og:site_name" content={site.name} />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content={title} />
-<meta name="twitter:description" content={site.socialDescription} />
-<script type="application/ld+json" set:html={JSON.stringify(person).replace(/</g, '\\u003c')} />
+<meta name="twitter:description" content={description} />
+<script type="application/ld+json" set:html={JSON.stringify(structuredData).replace(/</g, '\\u003c')} />

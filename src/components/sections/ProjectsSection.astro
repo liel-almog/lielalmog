@@ -1,5 +1,5 @@
 ---
-import { projectsSection } from '../../data/projects';
+import { featuredProject, projectsSection } from '../../data/projects';
 import ProjectTabs from '../projects/ProjectTabs.astro';
 ---
 
@@ -18,6 +18,30 @@ import ProjectTabs from '../projects/ProjectTabs.astro';
       </div>
       <p class="max-w-xl text-sm leading-7 text-muted">{projectsSection.description}</p>
     </div>
+    <article class="group relative mb-6 grid overflow-hidden rounded-xl border border-accent/35 bg-[radial-gradient(circle_at_82%_35%,rgba(199,255,62,0.13),transparent_42%),linear-gradient(120deg,#1b2415,#11160f)] shadow-panel md:grid-cols-[minmax(0,1fr)_minmax(18rem,0.8fr)]" aria-labelledby="featured-project-title">
+      <div class="relative z-10 flex flex-col items-start justify-center p-8 sm:p-10 lg:p-12">
+        <p class="mb-5 flex items-center gap-2 font-mono text-[0.7rem] tracking-[0.12em] text-accent uppercase">
+          <span class="h-2 w-2 rounded-full bg-accent shadow-[0_0_14px_rgba(199,255,62,0.8)]" aria-hidden="true"></span>
+          Live website · {featuredProject.category}
+        </p>
+        <h3 class="font-display text-[clamp(2.2rem,4vw,3.8rem)] leading-[1.05] font-bold tracking-[-0.055em]" id="featured-project-title">{featuredProject.name}</h3>
+        <p class="mt-4 max-w-lg text-sm leading-7 text-muted">{featuredProject.summary}</p>
+        <a class="mt-7 inline-flex min-h-11 items-center gap-3 rounded-sm border border-accent bg-accent px-5 py-2 text-sm font-bold text-page transition-colors hover:bg-accent-bright focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent" href={featuredProject.href} target="_blank" rel="noopener noreferrer" aria-label={`${featuredProject.linkLabel} (opens in a new tab)`}>
+          {featuredProject.linkLabel} <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <div class="relative flex min-h-64 items-center justify-center overflow-hidden border-t border-accent/15 bg-page/30 p-6 md:min-h-80 md:border-t-0 md:border-l" aria-hidden="true">
+        <div class="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(199,255,62,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(199,255,62,0.12)_1px,transparent_1px)] [background-size:32px_32px]"></div>
+        <svg class="relative w-full max-w-[25rem] drop-shadow-[0_0_24px_rgba(199,255,62,0.16)]" viewBox="0 0 400 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M65 130 145 58 242 73 335 38M65 130l92 76 85-133M157 206l106 5 72-86M242 73l93 52M263 211l72-86" stroke="#728b4d" stroke-width="2"/>
+          <path d="M65 130 145 58 242 73 335 125" stroke="#c7ff3e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="65" cy="130" r="16" fill="#c7ff3e"/><circle cx="145" cy="58" r="11" fill="#1b2415" stroke="#c7ff3e" stroke-width="3"/><circle cx="242" cy="73" r="11" fill="#1b2415" stroke="#c7ff3e" stroke-width="3"/><circle cx="335" cy="125" r="16" fill="#c7ff3e"/>
+          <circle cx="157" cy="206" r="8" fill="#445934" stroke="#a8c77b" stroke-width="2"/><circle cx="263" cy="211" r="8" fill="#445934" stroke="#a8c77b" stroke-width="2"/><circle cx="335" cy="38" r="8" fill="#445934" stroke="#a8c77b" stroke-width="2"/>
+          <circle cx="65" cy="130" r="4" fill="#11160f"/><circle cx="335" cy="125" r="4" fill="#11160f"/>
+        </svg>
+        <span class="absolute right-5 bottom-5 rounded border border-accent/25 bg-page/75 px-3 py-1.5 font-mono text-[0.65rem] tracking-[0.14em] text-accent uppercase">Search · Graphs · Explore</span>
+      </div>
+    </article>
     <ProjectTabs />
   </div>
 </section>
