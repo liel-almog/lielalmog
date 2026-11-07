@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ButtonLink from '../components/ui/ButtonLink.astro';
+import { projects } from '../data/projects';
+---
+
+<BaseLayout
+  title="Page not found | Liel Almog"
+  description="This page could not be found. Return home or explore Liel Almog's projects."
+  noindex
+>
+  <section class="mx-auto w-[calc(100%-2.5rem)] max-w-site py-[clamp(4rem,10vw,8rem)]" aria-labelledby="not-found-title">
+    <p class="mb-5 font-mono text-sm tracking-[0.12em] text-accent uppercase">404 · Page not found</p>
+    <h1 id="not-found-title" class="max-w-3xl font-display text-[clamp(2.7rem,6vw,5rem)] leading-[1.05] font-bold tracking-[-0.05em]">
+      This page is missing.
+    </h1>
+    <p class="mt-6 max-w-xl text-lg leading-8 text-muted">
+      The link may be out of date, or the address may contain a typo.
+      You can head home or explore a project below.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <ButtonLink href="/" variant="primary" arrow="→">Back to home</ButtonLink>
+      <ButtonLink href="/#projects" arrow="→">Browse projects</ButtonLink>
+    </div>
+
+    <nav class="mt-14 border-t border-line pt-8" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" class="text-xl font-bold">Explore a project</h2>
+      <ul class="mt-4 flex flex-wrap gap-x-8 gap-y-2">
+        {projects.map((project) => (
+          <li>
+            <a class="inline-flex min-h-11 items-center gap-2 text-accent hover:text-accent-bright" href={`/projects/${project.id}/`}>
+              {project.name} <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </section>
+</BaseLayout>

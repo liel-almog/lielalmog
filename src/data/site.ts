@@ -23,10 +23,10 @@ export const site = {
 export const legacySection = (id: string) => `${site.url}#${id}`;
 
 export const navigation = [
-  { label: "60-second intro", href: "#intro-video" },
-  { label: "Experience", href: "#experience" },
-  { label: "Expertise", href: "#expertise" },
-  { label: "Projects", href: "#projects" },
+  { label: "60-second intro", href: "/#intro-video" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Expertise", href: "/#expertise" },
+  { label: "Projects", href: "/#projects" },
   { label: "Algo Studio", href: featuredProject.href, external: true },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/#contact" },
 ] as const;

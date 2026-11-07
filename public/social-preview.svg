@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow"><stop stop-color="#364c1c"/><stop offset="1" stop-color="#090b08"/></radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#090b08"/>
+  <rect x="630" width="570" height="630" fill="url(#glow)"/>
+  <path d="M0 540h1200" stroke="#3a4632"/>
+  <circle cx="958" cy="180" r="12" fill="#c7ff3e"/>
+  <circle cx="812" cy="274" r="9" fill="#c7ff3e"/>
+  <circle cx="1040" cy="390" r="13" fill="#c7ff3e"/>
+  <path d="m812 274 146-94 82 210-228-116" fill="none" stroke="#c7ff3e" stroke-width="3" opacity=".65"/>
+  <text x="80" y="110" fill="#c7ff3e" font-size="25" font-family="Arial, sans-serif" font-weight="700" letter-spacing="4">SOFTWARE ENGINEERING</text>
+  <text x="76" y="299" fill="#f0f4e9" font-size="94" font-family="Arial, sans-serif" font-weight="800">Liel Almog</text>
+  <text x="80" y="365" fill="#c6cfbe" font-size="34" font-family="Arial, sans-serif">Senior Software Engineer</text>
+  <text x="80" y="411" fill="#c6cfbe" font-size="34" font-family="Arial, sans-serif">Backend Developer</text>
+  <text x="80" y="579" fill="#c7ff3e" font-size="25" font-family="Arial, sans-serif">lielalmog.com</text>
+</svg>

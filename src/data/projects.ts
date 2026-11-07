@@ -1,48 +1,74 @@
+export type ExternalUrl = `https://${string}`;
+
 export interface ArchitectureStep {
-  layer: string;
-  title: string;
-  stack: string;
-  description: string;
+  readonly layer: string;
+  readonly title: string;
+  readonly stack: string;
+  readonly description: string;
 }
 
-export interface Project {
-  id: string;
-  name: string;
-  category: string;
-  summary: string;
-  motivation: string;
-  technologies: readonly string[];
-  href: string;
-  linkLabel: string;
-  architecture: readonly ArchitectureStep[];
+export interface ProjectPreview {
+  readonly name: string;
+  readonly category: string;
+  readonly summary: string;
+  readonly href: ExternalUrl;
+  readonly linkLabel: string;
 }
 
-export const projectsSection = {
+export interface Project extends ProjectPreview {
+  readonly id: string;
+  readonly seoTitle: string;
+  readonly seoDescription: string;
+  readonly schemaType: "SoftwareSourceCode" | "WebApplication";
+  readonly repositoryUrl?: ExternalUrl;
+  readonly motivation: string;
+  readonly approach: readonly string[];
+  readonly technologies: readonly string[];
+  // The diagram always displays the first step on initial render.
+  readonly architecture: readonly [ArchitectureStep, ...ArchitectureStep[]];
+}
+
+export interface ProjectsSection {
+  readonly eyebrow: string;
+  readonly heading: string;
+  readonly emphasis: string;
+  readonly description: string;
+}
+
+export const projectsSection: ProjectsSection = {
   eyebrow: "Selected projects",
   heading: "Curiosity into code.",
   emphasis: "From Go to the kernel.",
   description:
     "I’m enthusiastic about Go (Golang), systems programming, and understanding how software works beneath the surface. These projects turn that curiosity into working systems, from kernel-level security to search algorithms and developer tools.",
-} as const;
+};
 
-export const featuredProject = {
+export const featuredProject: ProjectPreview = {
   name: "Algo Studio",
   category: "Interactive algorithm playground",
   summary:
     "Explore search and graph algorithms through an interactive playground built to make their behavior easier to see and understand.",
   href: "https://algorithms.lielalmog.com/",
   linkLabel: "Explore Algo Studio",
-} as const;
+};
 
-export const projects = [
+export const projects: readonly Project[] = [
   {
     id: "ebpf",
+    schemaType: "SoftwareSourceCode",
     name: "eBPF Shield",
     category: "Kernel-level security · Go & C",
     summary:
       "A per-process firewall that connects a browser control plane and backend services to a Go host agent and kernel-level eBPF enforcement on Linux.",
+    seoTitle: "eBPF Shield: Per-Process Linux Firewall",
+    seoDescription:
+      "Explore eBPF Shield, a per-process Linux firewall built with Go, C, eBPF, FastAPI, MongoDB, and React. See how its control plane and host agent connect.",
     motivation:
       "Building on my degree and systems programming knowledge, I explored how operating systems, networking, and process-aware security fit together. I was especially excited to connect Go in user space with C and eBPF programs running inside the Linux kernel.",
+    approach: [
+      "eBPF Shield separates policy management from enforcement. A React control plane gives users a place to manage organizations, hosts, processes, and firewall rules. FastAPI services coordinate those workflows and store their state in MongoDB.",
+      "On each protected Linux host, a Go agent observes processes and synchronizes policy with the backend. C and eBPF programs then apply process-aware network rules in the kernel. The project brings the product interface, APIs, host software, and kernel behavior into one system.",
+    ],
     technologies: ["Go", "C", "eBPF", "Linux", "FastAPI", "MongoDB", "React"],
     href: "https://github.com/orgs/ebpf-shield/repositories",
     linkLabel: "Explore the organization",
@@ -85,55 +111,69 @@ export const projects = [
     ],
   },
   {
-    id: "puzzle",
-    name: "Eight Puzzle Solver",
-    category: "Search algorithms · Go backend",
-    summary:
-      "An interactive Go and TypeScript application for configuring sliding puzzles, choosing a search algorithm, and following the solution step by step.",
+    id: "algo-studio",
+    schemaType: "WebApplication",
+    name: featuredProject.name,
+    category: featuredProject.category,
+    summary: featuredProject.summary,
+    seoTitle: "Algo Studio: Interactive Algorithm Playground",
+    seoDescription:
+      "Explore search and graph algorithms in Algo Studio, an interactive playground that makes algorithm behavior easier to see and understand.",
     motivation:
-      "A hands-on way to deepen my enthusiasm for Go: take the search algorithms I studied, implement them in a Go backend, and make their behavior visible through an interactive interface.",
-    technologies: ["Go", "TypeScript", "React", "BFS", "DFS", "A*"],
-    href: "https://github.com/liel-almog/go-eight-puzzle-solver",
-    linkLabel: "View repository",
+      "I wanted to make search and graph algorithms easier to understand by giving people a place to explore how they behave interactively.",
+    approach: [
+      "Algo Studio brings search and graph algorithms into an interactive playground, so visitors can explore their behavior through the website.",
+      "The visual experience puts the algorithms themselves at the center, helping visitors build intuition as they explore different examples.",
+    ],
+    technologies: [
+      "Search algorithms",
+      "Graph algorithms",
+      "Interactive visualization",
+    ],
+    href: featuredProject.href,
+    linkLabel: featuredProject.linkLabel,
     architecture: [
       {
-        layer: "Input",
-        title: "Interactive web UI",
-        stack: "React · TypeScript",
+        layer: "Explore",
+        title: "Algorithm playground",
+        stack: "Search · Graphs",
         description:
-          "Users configure a puzzle, arrange tiles, and select a search strategy.",
+          "Visitors explore search and graph algorithms through the live website.",
       },
       {
-        layer: "Service",
-        title: "Go backend",
-        stack: "Go · API",
+        layer: "Interact",
+        title: "Hands-on examples",
+        stack: "Interactive UI",
         description:
-          "The backend accepts puzzle states and provides a clear API boundary around the solving engine.",
+          "The playground invites visitors to engage with algorithm behavior directly.",
       },
       {
-        layer: "Logic",
-        title: "Search engine",
-        stack: "BFS · DFS · A*",
+        layer: "Understand",
+        title: "Visual explanation",
+        stack: "Behavior · Intuition",
         description:
-          "Breadth-first, depth-first, and A* search demonstrate tradeoffs in memory use, exploration, and finding a solution.",
-      },
-      {
-        layer: "Output",
-        title: "Visual solution",
-        stack: "Path · Steps",
-        description:
-          "The interface turns the computed solution path into a sequence users can follow step by step.",
+          "Visual feedback makes the algorithms' behavior easier to see and understand.",
       },
     ],
   },
   {
     id: "vulnerability",
+    schemaType: "SoftwareSourceCode",
+    repositoryUrl:
+      "https://github.com/liel-almog/package-vulnerability-detector",
     name: "Package Vulnerability Detector",
     category: "Application security · Developer tooling",
     summary:
       "A NestJS API that analyzes package definition files and retrieves known vulnerabilities through GitHub’s Security Advisories GraphQL API.",
+    seoTitle: "Package Vulnerability Detector: NestJS API",
+    seoDescription:
+      "See how this NestJS API parses package dependencies and checks GitHub Security Advisories through GraphQL to help developers investigate known vulnerabilities.",
     motivation:
       "My curiosity extends to the tools developers rely on every day. This project brings together backend API design and security to make dependency risks easier to investigate.",
+    approach: [
+      "The NestJS API accepts package definition files, parses their dependencies, and validates requests before looking up advisory data. It uses GitHub’s Security Advisories GraphQL API as the source of known vulnerabilities.",
+      "Results connect packages to relevant advisories so developers can investigate dependency risk. The service is packaged with Docker and keeps the parsing, external lookup, and result handling behind a clear API boundary.",
+    ],
     technologies: [
       "TypeScript",
       "NestJS",
@@ -174,4 +214,4 @@ export const projects = [
       },
     ],
   },
-] as const satisfies readonly Project[];
+];

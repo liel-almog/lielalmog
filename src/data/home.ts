@@ -3,7 +3,7 @@ import { featuredProject } from './projects';
 
 export const hero = {
   eyebrow: 'Senior Software Engineer · Systems thinker · End-to-end owner',
-  heading: 'I build the systems',
+  heading: 'I build backend systems',
   emphasis: 'that keep everything moving.',
   description:
     'From backend architecture to the product interface, I turn complex constraints into dependable software teams can ship, run, and trust. I work across distributed systems, cloud platforms, Go, Python, and TypeScript.',

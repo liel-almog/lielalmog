@@ -26,14 +26,17 @@ import ArchitectureDiagram from './ArchitectureDiagram.astro';
           <p class="mb-3 font-mono text-xs leading-6 text-accent">{project.category}</p>
           <h3 class="text-[clamp(1.7rem,3vw,2.5rem)] leading-tight font-bold tracking-[-0.04em]" id={`project-title-${project.id}`}>{project.name}</h3>
           <p class="mt-4 text-sm leading-7 text-muted">{project.summary}</p>
-          <a class="mt-5 inline-flex min-h-11 items-center gap-3 text-sm font-bold text-accent hover:text-accent-bright" href={project.href}>
+          <a class="mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-accent hover:text-accent-bright" href={`/projects/${project.id}/`}>
+            Read the {project.name} case study <span aria-hidden="true">→</span>
+          </a>
+          <a class="ml-5 inline-flex min-h-11 items-center gap-3 text-sm font-bold text-accent hover:text-accent-bright max-[600px]:ml-0" href={project.href}>
             {project.linkLabel} <span aria-hidden="true">↗</span>
           </a>
         </div>
         <div class="border-l border-line pl-8 max-[900px]:border-t max-[900px]:border-l-0 max-[900px]:pt-5 max-[900px]:pl-0">
           <p class="mb-3 font-mono text-[0.65rem] tracking-[0.15em] text-subtle uppercase">What drew me in</p>
           <p class="text-sm leading-7 text-muted">{project.motivation}</p>
-          <ul class="mt-5 flex flex-wrap gap-2" aria-label={`${project.name} technologies`}>
+          <ul class="mt-5 flex flex-wrap gap-2" aria-label={`${project.name} technologies and concepts`}>
             {project.technologies.map((technology) => (
               <li class:list={[
                 'rounded-md border px-2.5 py-1 text-xs leading-5',
