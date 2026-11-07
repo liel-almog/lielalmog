@@ -47,7 +47,7 @@ export const featuredProject: ProjectPreview = {
   name: "Algo Studio",
   category: "Interactive algorithm playground",
   summary:
-    "Explore search and graph algorithms through an interactive playground built to make their behavior easier to see and understand.",
+    "A React and TypeScript playground backed by a Go API for exploring search, graph, and randomized verification algorithms.",
   href: "https://algorithms.lielalmog.com/",
   linkLabel: "Explore Algo Studio",
 };
@@ -118,41 +118,53 @@ export const projects: readonly Project[] = [
     summary: featuredProject.summary,
     seoTitle: "Algo Studio: Interactive Algorithm Playground",
     seoDescription:
-      "Explore search and graph algorithms in Algo Studio, an interactive playground that makes algorithm behavior easier to see and understand.",
+      "Explore Algo Studio's React interface and Go backend, from validated API requests and bounded algorithm execution to visual results for search, graphs, and randomized verification.",
     motivation:
       "I wanted to make search and graph algorithms easier to understand by giving people a place to explore how they behave interactively.",
     approach: [
-      "Algo Studio brings search and graph algorithms into an interactive playground, so visitors can explore their behavior through the website.",
-      "The visual experience puts the algorithms themselves at the center, helping visitors build intuition as they explore different examples.",
+      "A React and TypeScript frontend connects to a Go API built with Echo. Routes and controllers handle HTTP requests, services select the problem and algorithm, and dedicated problem packages own validation rules, computation, and result construction.",
+      "The backend implements A*, breadth-first search, and iterative-deepening DFS for sliding puzzles, Karger's minimum-cut algorithm, Freivalds' matrix verification, and Schwartz–Zippel polynomial identity testing. Each lab returns structured results that the frontend can explain visually.",
+      "Strict JSON validation, request-size limits, a five-second execution deadline, and bounded concurrency keep computational work under control. Request IDs and structured logs support diagnostics, while Docker Compose and Nginx provide the backend deployment setup.",
     ],
     technologies: [
+      "Go",
+      "Echo",
+      "React",
+      "TypeScript",
+      "Docker",
       "Search algorithms",
-      "Graph algorithms",
-      "Interactive visualization",
+      "Randomized algorithms",
     ],
     href: featuredProject.href,
     linkLabel: featuredProject.linkLabel,
     architecture: [
       {
         layer: "Explore",
-        title: "Algorithm playground",
-        stack: "Search · Graphs",
+        title: "Interactive algorithm labs",
+        stack: "React · TypeScript",
         description:
-          "Visitors explore search and graph algorithms through the live website.",
+          "Users configure puzzle boards, graphs, matrices, or polynomials. The frontend sends generation and solve requests to the Go API.",
       },
       {
-        layer: "Interact",
-        title: "Hands-on examples",
-        stack: "Interactive UI",
+        layer: "API",
+        title: "Validate and route requests",
+        stack: "Go · Echo · JSON",
         description:
-          "The playground invites visitors to engage with algorithm behavior directly.",
+          "The Go API validates input, selects the requested lab, and limits request size, execution time, and concurrent work.",
+      },
+      {
+        layer: "Compute",
+        title: "Run the algorithm",
+        stack: "Search · Graphs · Verification",
+        description:
+          "Problem-specific Go packages run search, minimum-cut, matrix verification, or polynomial identity algorithms and build structured results.",
       },
       {
         layer: "Understand",
-        title: "Visual explanation",
-        stack: "Behavior · Intuition",
+        title: "Explore the results",
+        stack: "Results · Visualization",
         description:
-          "Visual feedback makes the algorithms' behavior easier to see and understand.",
+          "The frontend turns solution paths, graph partitions, and verification results into visual explanations and playback.",
       },
     ],
   },
