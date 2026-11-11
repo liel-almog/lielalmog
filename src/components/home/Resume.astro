@@ -6,10 +6,12 @@ import { site } from '../../data/site';
   id="resume-dialog"
   aria-labelledby="resume-title"
   tabindex="-1"
-  class="resume-dialog m-auto max-w-none overflow-hidden border border-line bg-page p-0 text-foreground shadow-2xl backdrop:bg-black/70"
+  class="m-auto box-border h-[90dvh] max-h-[calc(100dvh_-_32px_-_env(safe-area-inset-top,0px)_-_env(safe-area-inset-bottom,0px))] w-[min(calc(100%_-_32px),1100px)] max-w-none overflow-hidden border border-line bg-page p-0 text-foreground shadow-2xl focus-visible:outline-none backdrop:bg-black/70
+    max-[760px]:inset-0 max-[760px]:m-0 max-[760px]:h-dvh max-[760px]:max-h-dvh max-[760px]:w-full max-[760px]:border-0"
 >
   <div class="flex h-full min-h-0 flex-col">
-    <div class="resume-header flex shrink-0 items-center gap-4 border-b border-line bg-page px-5 py-3 max-[760px]:gap-3 max-[760px]:px-4 max-[760px]:py-3">
+    <div class="flex shrink-0 items-center gap-4 border-b border-line bg-page px-5 py-3
+      max-[760px]:gap-3 max-[760px]:pt-[calc(12px_+_env(safe-area-inset-top,0px))] max-[760px]:pb-3 max-[760px]:pl-[calc(16px_+_env(safe-area-inset-left,0px))] max-[760px]:pr-[calc(16px_+_env(safe-area-inset-right,0px))]">
       <div class="min-w-0 flex-1">
         <p class="font-mono text-[10px] font-medium leading-none tracking-[.12em] text-accent">LIEL ALMOG / CV</p>
         <h2 id="resume-title" class="mt-1.5 truncate text-xl leading-tight font-semibold max-[760px]:text-[17px]">My resume</h2>
@@ -24,14 +26,16 @@ import { site } from '../../data/site';
         <button aria-label="Close resume" class="inline-flex min-h-11 cursor-pointer items-center justify-center gap-1.5 px-2 text-[13px] leading-none font-semibold text-muted hover:text-foreground"><span>Close</span><span class="text-lg font-normal" aria-hidden="true">×</span></button>
       </form>
     </div>
-    <div class="resume-viewport" role="region" aria-label="Scrollable resume PDF" tabindex="0">
+    <div class="@container min-h-0 min-w-0 flex-1 overflow-auto overscroll-contain [-webkit-overflow-scrolling:touch]" role="region" aria-label="Scrollable resume PDF" tabindex="0">
       <iframe
         src={`${site.resume}#view=FitH`}
         title="Liel Almog’s resume PDF"
-        class="resume-pdf block border-0 bg-page"
+        class="block h-full w-full border-0 bg-page
+          max-[760px]:h-[max(100%,calc(100cqw*1.4142_+_56px))]"
       ></iframe>
     </div>
-    <div class="resume-actions hidden shrink-0 items-center gap-2 border-t border-line bg-page px-4 py-3 max-[760px]:flex">
+    <div class="hidden shrink-0 items-center gap-2 border-t border-line bg-page px-4 py-3
+      max-[760px]:flex max-[760px]:pb-[calc(12px_+_env(safe-area-inset-bottom,0px))] max-[760px]:pl-[calc(16px_+_env(safe-area-inset-left,0px))] max-[760px]:pr-[calc(16px_+_env(safe-area-inset-right,0px))]">
       <a href={site.resume} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-12 min-w-0 flex-1 items-center justify-center gap-1.5 border border-line px-2 text-center text-[12px] leading-tight font-semibold hover:bg-panel">
         Open PDF <span aria-hidden="true">↗</span>
       </a>
@@ -41,61 +45,5 @@ import { site } from '../../data/site';
     </div>
   </div>
 </dialog>
-
-<style>
-  .resume-dialog {
-    width: min(calc(100% - 32px), 1100px);
-    height: 90dvh;
-    max-height: calc(100dvh - 32px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
-    box-sizing: border-box;
-  }
-
-  .resume-dialog:focus-visible {
-    outline: none;
-  }
-
-  .resume-viewport {
-    flex: 1;
-    min-width: 0;
-    min-height: 0;
-    overflow: auto;
-    overscroll-behavior: contain;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .resume-pdf {
-    width: 100%;
-    height: 100%;
-  }
-
-  @media (max-width: 760px) {
-    .resume-pdf {
-      /* Start with an A4 page fitted to the phone width, allowing space for viewer controls. */
-      height: max(100%, calc(100vw * 1.4142 + 56px));
-    }
-
-    .resume-dialog {
-      inset: 0;
-      width: 100%;
-      height: 100dvh;
-      max-width: none;
-      max-height: 100dvh;
-      border: 0;
-      margin: 0;
-    }
-
-    .resume-header {
-      padding-top: calc(12px + env(safe-area-inset-top, 0px));
-      padding-left: calc(16px + env(safe-area-inset-left, 0px));
-      padding-right: calc(16px + env(safe-area-inset-right, 0px));
-    }
-
-    .resume-actions {
-      padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
-      padding-left: calc(16px + env(safe-area-inset-left, 0px));
-      padding-right: calc(16px + env(safe-area-inset-right, 0px));
-    }
-  }
-</style>
 
 <script src="../../scripts/resume-dialog.ts"></script>
