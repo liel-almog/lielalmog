@@ -2,6 +2,7 @@
 import SeoHead from '../components/seo/SeoHead.astro';
 import SiteHeader from '../components/layout/SiteHeader.astro';
 import SiteFooter from '../components/layout/SiteFooter.astro';
+import Resume from '../components/home/Resume.astro';
 import '../styles/tailwind.css';
 
 interface Props {
@@ -20,6 +21,7 @@ interface Props {
     <SiteHeader />
     <main id="main-content" tabindex="-1"><slot /></main>
     <SiteFooter />
+    <Resume />
   </body>
 </html>
 
