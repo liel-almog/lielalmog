@@ -1,6 +1,8 @@
 I have a dev server running on port 3000. You can access it at http://localhost:4321.
 DO NOT USE YOUR OWN SERVER
 
+DO NOT ADD anything to the global.css file
+
 ## Development
 
 When starting the dev server, use background mode:
