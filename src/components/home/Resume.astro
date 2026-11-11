@@ -24,11 +24,13 @@ import { site } from '../../data/site';
         <button aria-label="Close resume" class="inline-flex min-h-11 cursor-pointer items-center justify-center gap-1.5 px-2 text-[13px] leading-none font-semibold text-muted hover:text-foreground"><span>Close</span><span class="text-lg font-normal" aria-hidden="true">×</span></button>
       </form>
     </div>
-    <iframe
-      src={site.resume}
-      title="Liel Almog’s resume PDF"
-      class="block min-h-0 min-w-0 w-full flex-1 border-0 bg-page"
-    ></iframe>
+    <div class="resume-viewport" role="region" aria-label="Scrollable resume PDF" tabindex="0">
+      <iframe
+        src={`${site.resume}#view=FitH`}
+        title="Liel Almog’s resume PDF"
+        class="resume-pdf block border-0 bg-page"
+      ></iframe>
+    </div>
     <div class="resume-actions hidden shrink-0 items-center gap-2 border-t border-line bg-page px-4 py-3 max-[760px]:flex">
       <a href={site.resume} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-12 min-w-0 flex-1 items-center justify-center gap-1.5 border border-line px-2 text-center text-[12px] leading-tight font-semibold hover:bg-panel">
         Open PDF <span aria-hidden="true">↗</span>
@@ -52,7 +54,26 @@ import { site } from '../../data/site';
     outline: none;
   }
 
+  .resume-viewport {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .resume-pdf {
+    width: 100%;
+    height: 100%;
+  }
+
   @media (max-width: 760px) {
+    .resume-pdf {
+      /* Start with an A4 page fitted to the phone width, allowing space for viewer controls. */
+      height: max(100%, calc(100vw * 1.4142 + 56px));
+    }
+
     .resume-dialog {
       inset: 0;
       width: 100%;
