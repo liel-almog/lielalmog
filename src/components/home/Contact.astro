@@ -14,13 +14,13 @@ import { site } from '../../data/site';
     <div class="grid min-w-0">
       <a class="flex flex-col gap-1.25 border-t border-[#ccd1c5] py-4.25" href={`mailto:${site.email}`}>
         <small class="font-mono text-[9px] tracking-[.1em] text-subtle">EMAIL</small>
-        <span class="text-[17px] wrap-anywhere">{site.email} ↗</span>
+        <span class="site-text-link w-fit max-w-full text-[17px] wrap-anywhere">{site.email} ↗</span>
       </a>{site.profiles.map(p => <a class="flex flex-col gap-1.25 border-t border-[#ccd1c5] py-4.25" href={p.href}>
         <small class="font-mono text-[9px] tracking-[.1em] text-subtle">{p.name.toUpperCase()}</small>
-        <span class="text-[17px] wrap-anywhere">{p.name === 'GitHub' ? 'Explore my code' : 'Let’s connect'} ↗</span>
+        <span class="site-text-link w-fit max-w-full text-[17px] wrap-anywhere">{p.name === 'GitHub' ? 'Explore my code' : 'Let’s connect'} ↗</span>
       </a>)}<a class="flex flex-col gap-1.25 border-t border-[#ccd1c5] py-4.25" href={site.resume}>
         <small class="font-mono text-[9px] tracking-[.1em] text-subtle">RESUME</small>
-        <span class="text-[17px] wrap-anywhere">View my experience ↗</span>
+        <span class="site-text-link w-fit max-w-full text-[17px] wrap-anywhere">View my experience ↗</span>
       </a>
     </div>
   </div>

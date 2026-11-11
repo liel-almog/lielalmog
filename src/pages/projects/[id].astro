@@ -34,9 +34,9 @@ const structuredData = {
   <article class="mx-auto w-[calc(100%-2.5rem)] max-w-site max-[400px]:w-[calc(100%-32px)] py-[clamp(3rem,7vw,6rem)]">
     <nav aria-label="Breadcrumb" class="mb-8 text-sm text-muted">
       <ol class="flex flex-wrap items-center gap-2">
-        <li><a class="text-accent hover:text-accent-bright" href="/">Home</a></li>
+        <li><a class="site-text-link text-accent hover:text-accent-bright" href="/">Home</a></li>
         <li aria-hidden="true">/</li>
-        <li><a class="text-accent hover:text-accent-bright" href="/#projects">Projects</a></li>
+        <li><a class="site-text-link text-accent hover:text-accent-bright" href="/#projects">Projects</a></li>
         <li aria-hidden="true">/</li>
         <li aria-current="page">{project.name}</li>
       </ol>
@@ -92,7 +92,7 @@ const structuredData = {
       <ul class="mt-5 flex flex-wrap gap-x-8 gap-y-3">
         {relatedProjects.map((related) => (
           <li>
-            <a class="inline-flex min-h-11 items-center text-accent hover:text-accent-bright" href={`/projects/${related.id}/`}>
+            <a class="site-text-link inline-flex min-h-11 items-center text-accent hover:text-accent-bright" href={`/projects/${related.id}/`}>
               {related.name} <span aria-hidden="true">→</span>
             </a>
           </li>

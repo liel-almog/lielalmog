@@ -1,52 +1,116 @@
 ---
-interface Props { projectId: string; index: number; }
+import { featuredProject } from '../../data/projects';
+
+const illustrations = {
+  ebpf: {
+    category: 'SECURITY',
+    flow: 'POLICY → ENFORCEMENT',
+    layers: ['CONTROL PLANE', 'GO HOST AGENT', 'C / eBPF KERNEL'],
+  },
+  'algo-studio': {
+    category: 'ALGORITHMS',
+    flow: 'INPUT → SEARCH → SOLUTION',
+  },
+  vulnerability: {
+    category: 'DEVELOPER TOOLS',
+    flow: 'DEPENDENCIES → KNOWN RISKS',
+    layers: ['package.json', 'NestJS + GraphQL', 'Security advisories'],
+  },
+} as const;
+
+interface Props {
+  projectId: string;
+  index: number;
+}
+
 const { projectId, index } = Astro.props;
-const labels: Record<string, { category: string; flow: string }> = {
-  ebpf: { category: 'SECURITY', flow: 'POLICY → ENFORCEMENT' },
-  'algo-studio': { category: 'ALGORITHMS', flow: 'INPUT → SEARCH → SOLUTION' },
-  vulnerability: { category: 'DEVELOPER TOOLS', flow: 'DEPENDENCIES → KNOWN RISKS' },
-};
-const label = labels[projectId];
+const isIllustrationId = (id: string): id is keyof typeof illustrations => id in illustrations;
+if (!isIllustrationId(projectId)) {
+  throw new Error(`Unknown project illustration: ${projectId}`);
+}
+const illustration = illustrations[projectId];
+const algorithmTiles = Array.from({ length: 8 }, (_, i) => i + 1);
 ---
 
-<div class="flex min-w-0 min-h-77.5 flex-col justify-between bg-brand-soft bg-[radial-gradient(#a6baa323_.8px,transparent_.8px)] bg-size-[15px_15px] p-5.5 max-[760px]:min-h-67.5" aria-hidden="true">
-  <div class="flex justify-between gap-3 font-mono text-[8px] leading-normal tracking-[.05em] text-on-brand">
+<div class="flex min-w-0 min-h-77.5 flex-col justify-between bg-brand-soft bg-[radial-gradient(#a6baa323_.8px,transparent_.8px)] bg-size-[15px_15px] p-5.5 max-[760px]:min-h-67.5">
+  <div aria-hidden="true" class="flex justify-between gap-3 font-mono text-[8px] leading-normal tracking-[.05em] text-on-brand">
     <span>{String(index + 1).padStart(2, '0')} / SYSTEM STUDY</span>
-    <span>{label.category}</span>
+    <span>{illustration.category}</span>
   </div>
-  {projectId === 'ebpf' ? (
-    <div class="flex flex-col items-center gap-1.25 p-6 max-[400px]:px-0">
-      {['CONTROL PLANE', 'GO HOST AGENT', 'C / eBPF KERNEL'].map((layer, i) => (
+  {projectId === 'ebpf' && (
+    <div aria-hidden="true" class="flex flex-col items-center gap-1.25 p-6 max-[400px]:px-0">
+      {illustrations.ebpf.layers.map((layer, i) => (
         <Fragment>
           {i > 0 && <span class="leading-none text-[#c6d6b6]">↓</span>}
           <div class:list={[
             'w-full max-w-55 border border-[#95ad8c] p-2.5 text-center font-mono text-[10px] leading-normal tracking-[.08em]',
-            i === 2 ? 'bg-[#c6d6b6] text-brand' : 'bg-brand-soft',
+            { 'bg-[#c6d6b6] text-brand': i === 2, 'bg-brand-soft': i !== 2 },
           ]}>{layer}</div>
         </Fragment>
       ))}
     </div>
-  ) : projectId === 'algo-studio' ? (
+  )}
+
+  {projectId === 'algo-studio' && (
     <div class="m-5.5 grid grid-cols-[repeat(3,52px)] gap-1.25 self-center">
-      {['1', '2', '3', '4', '5', '6', '7', '8', '↗'].map((n, i) => (
-        <span class:list={[
-          'grid h-12 place-items-center font-serif text-[22px] leading-normal',
-          i === 8 ? 'bg-[#a85b3c] text-white' : 'bg-[#c6d6b6] text-brand',
-        ]}>{n}</span>
+      {algorithmTiles.map((tile) => (
+        <span aria-hidden="true" class="grid h-12 place-items-center bg-[#c6d6b6] font-serif text-[22px] leading-normal text-brand">{tile}</span>
       ))}
+      <a
+        href={featuredProject.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open Algo Studio"
+        class="algo-easter-egg relative z-10 grid h-12 place-items-center bg-[#a85b3c] font-serif text-[22px] leading-normal text-white transition-transform duration-200 hover:scale-110 focus-visible:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a85b3c]"
+      >↗<span class="algo-easter-egg__hint" aria-hidden="true">Psst… try Algo Studio ↗</span></a>
     </div>
-  ) : (
-    <div class="my-6.25 mx-2 grid min-w-0 justify-items-center gap-1.75 font-mono text-[12px] leading-normal">
-      {['package.json', 'NestJS + GraphQL', 'Security advisories'].map((layer, i) => (
+  )}
+
+  {projectId === 'vulnerability' && (
+    <div aria-hidden="true" class="my-6.25 mx-2 grid min-w-0 justify-items-center gap-1.75 font-mono text-[12px] leading-normal">
+      {illustrations.vulnerability.layers.map((layer, i) => (
         <Fragment>
           {i > 0 && <b>↓</b>}
           <span class:list={[
             'max-w-full wrap-anywhere border border-[#95ad8c] p-3 text-center',
-            i === 2 ? 'bg-[#c6d6b6] text-brand' : 'bg-brand-soft',
+            { 'bg-[#c6d6b6] text-brand': i === 2, 'bg-brand-soft': i !== 2 },
           ]}>{layer}</span>
         </Fragment>
       ))}
     </div>
   )}
-  <span class="font-mono text-[8px] leading-normal tracking-[.09em] text-on-brand">{label.flow}</span>
+  <span aria-hidden="true" class="font-mono text-[8px] leading-normal tracking-[.09em] text-on-brand">{illustration.flow}</span>
 </div>
+
+<style>
+  .algo-easter-egg__hint {
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 10px);
+    width: max-content;
+    max-width: min(220px, 55vw);
+    padding: 5px 9px;
+    transform: translate(4px, -50%);
+    border: 1px solid #a85b3c;
+    background: #f5f2e9;
+    color: #303a31;
+    font: 10px/1.4 ui-monospace, monospace;
+    letter-spacing: .02em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease;
+  }
+
+  .algo-easter-egg:hover .algo-easter-egg__hint,
+  .algo-easter-egg:focus-visible .algo-easter-egg__hint {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .algo-easter-egg,
+    .algo-easter-egg__hint {
+      transition: none;
+    }
+  }
+</style>

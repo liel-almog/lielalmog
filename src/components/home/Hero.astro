@@ -17,9 +17,12 @@ import { site } from '../../data/site';
       <ButtonLink href={site.resume} variant="primary" arrow="↗">View resume</ButtonLink>
       <ButtonLink href="#experience" arrow="↓">Explore my experience</ButtonLink>
     </div>
-    <div class="flex flex-wrap gap-x-6.5 gap-y-1 mt-6.25 text-[12px] max-[760px]:mt-3.5">{site.profiles.map(p => <a class="flex min-h-11 items-center gap-2" href={p.href}>{p.name} <span aria-hidden="true">↗</span>
-      </a>)}<a class="flex min-h-11 items-center gap-2" href={`mailto:${site.email}`}>Email me <span aria-hidden="true">↗</span>
-      </a>
+    <div class="mt-6.25 max-[760px]:mt-3.5">
+      <div class="inline-flex max-w-full flex-wrap items-center gap-x-6.5 text-[13px] font-medium">
+        {site.profiles.map(p => <a class="site-text-link inline-flex min-h-11 items-center gap-1.5" href={p.href}>{p.name} <span class="text-accent" aria-hidden="true">↗</span>
+        </a>)}<a class="site-text-link inline-flex min-h-11 items-center gap-1.5" href={`mailto:${site.email}`}>Email me <span class="text-accent" aria-hidden="true">↗</span>
+        </a>
+      </div>
     </div>
   </div>
   <aside class="min-w-0 bg-panel border border-[#c4cebd] px-7.5 py-6.5 relative shadow-[10px_10px_0_#edebe3] max-[1050px]:p-5 max-[760px]:p-5 max-[400px]:p-4 max-[760px]:shadow-[6px_6px_0_#edebe3]" aria-labelledby="system-title">

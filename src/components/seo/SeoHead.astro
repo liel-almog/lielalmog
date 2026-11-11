@@ -10,7 +10,7 @@ interface Props {
 
 const { title = site.title, description = site.description, noindex = false, about } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
-const image = new URL('/social-preview.png', site.url).href;
+const image = new URL('/social-logo.png', site.url).href;
 const websiteId = new URL('/#website', site.url).href;
 const personId = new URL('/#person', site.url).href;
 const person = {
@@ -68,7 +68,7 @@ const structuredData = {
 <meta property="og:image" content={image} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Liel Almog - Senior Software Engineer and Backend Developer" />
+<meta property="og:image:alt" content="Liel Almog's nested paths logo and Senior backend engineer title" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
