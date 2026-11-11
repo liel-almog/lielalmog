@@ -8,7 +8,6 @@ const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
 
 <dialog
   id="resume-dialog"
-  data-resume-url={site.resume}
   aria-labelledby="resume-title"
   class="resume-dialog m-auto max-w-none overflow-hidden border border-line bg-page p-0 text-foreground shadow-2xl backdrop:bg-black/60"
 >
@@ -75,8 +74,7 @@ const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
     const viewer = dialog.querySelector('iframe');
     let previousOverflow = '';
 
-    document.querySelectorAll<HTMLAnchorElement>('a').forEach((link) => {
-      if (link.href !== dialog.dataset.resumeUrl || dialog.contains(link)) return;
+    document.querySelectorAll<HTMLAnchorElement>('[data-resume-dialog]').forEach((link) => {
       link.setAttribute('aria-haspopup', 'dialog');
       link.setAttribute('aria-controls', dialog.id);
       link.addEventListener('click', (event) => {

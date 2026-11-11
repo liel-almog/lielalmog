@@ -3,9 +3,11 @@ interface Props {
   href: string;
   variant?: 'primary' | 'secondary';
   arrow?: string;
+  target?: '_blank';
+  resumeDialog?: boolean;
 }
 
-const { href, variant = 'secondary', arrow } = Astro.props;
+const { href, variant = 'secondary', arrow, target, resumeDialog = false } = Astro.props;
 const variants = {
   primary: 'border-brand bg-brand text-white hover:bg-brand-hover hover:text-white',
   secondary: 'border-[#b7beb2] hover:bg-surface-light',
@@ -18,6 +20,9 @@ const variants = {
     variants[variant],
   ]}
   href={href}
+  target={target}
+  rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+  data-resume-dialog={resumeDialog ? '' : undefined}
 >
   <slot />
   {arrow && <span class="shrink-0" aria-hidden="true">{arrow}</span>}

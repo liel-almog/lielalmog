@@ -14,5 +14,6 @@ export const site = {
       name: "LinkedIn",
       href: "https://www.linkedin.com/in/liel-almog-454158335/",
     },
+    { name: "X", href: "https://x.com/lielalmog" },
   ],
 } as const;
