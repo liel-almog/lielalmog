@@ -1,40 +1,40 @@
 ---
 import { site } from '../../data/site';
-
-const previewUrl = new URL('preview', site.resume).href;
-const fileId = new URL(site.resume).pathname.split('/')[3];
-const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
 ---
 
 <dialog
   id="resume-dialog"
   aria-labelledby="resume-title"
-  class="resume-dialog m-auto max-w-none overflow-hidden border border-line bg-page p-0 text-foreground shadow-2xl backdrop:bg-black/60"
+  tabindex="-1"
+  class="resume-dialog m-auto max-w-none overflow-hidden border border-line bg-page p-0 text-foreground shadow-2xl backdrop:bg-black/70"
 >
   <div class="flex h-full min-h-0 flex-col">
-    <div class="flex shrink-0 items-center gap-4 border-b border-line px-5 py-3 max-[760px]:gap-2 max-[760px]:px-3 max-[760px]:py-1.5">
-      <h2 id="resume-title" class="flex min-h-11 min-w-0 flex-1 items-center whitespace-nowrap text-xl leading-none font-semibold max-[760px]:text-sm">My resume</h2>
+    <div class="resume-header flex shrink-0 items-center gap-4 border-b border-line bg-page px-5 py-3 max-[760px]:gap-3 max-[760px]:px-4 max-[760px]:py-3">
+      <div class="min-w-0 flex-1">
+        <p class="font-mono text-[10px] font-medium leading-none tracking-[.12em] text-accent">LIEL ALMOG / CV</p>
+        <h2 id="resume-title" class="mt-1.5 truncate text-xl leading-tight font-semibold max-[760px]:text-[17px]">My resume</h2>
+      </div>
       <a href={site.resume} target="_blank" rel="noopener noreferrer" class="site-text-link inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap text-[13px] leading-none font-semibold max-[760px]:hidden">
         Open PDF in a new tab <span aria-hidden="true">↗</span>
       </a>
-      <a href={downloadUrl} target="_blank" rel="noopener noreferrer" class="site-text-link inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap text-[13px] leading-none font-semibold max-[760px]:hidden">
+      <a href={site.resume} download="Liel-Almog-Resume.pdf" class="site-text-link inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap text-[13px] leading-none font-semibold max-[760px]:hidden">
         Download CV <span aria-hidden="true">↓</span>
       </a>
       <form method="dialog" class="flex shrink-0 items-center">
-        <button autofocus class="inline-flex min-h-11 cursor-pointer items-center gap-1 whitespace-nowrap border border-line px-3 text-[13px] leading-none font-semibold max-[760px]:px-2 max-[760px]:text-xs">Close <span aria-hidden="true">×</span></button>
+        <button aria-label="Close resume" class="inline-flex min-h-11 cursor-pointer items-center justify-center gap-1.5 px-2 text-[13px] leading-none font-semibold text-muted hover:text-foreground"><span>Close</span><span class="text-lg font-normal" aria-hidden="true">×</span></button>
       </form>
     </div>
     <iframe
-      data-src={previewUrl}
+      src={site.resume}
       title="Liel Almog’s resume PDF"
       class="block min-h-0 min-w-0 w-full flex-1 border-0 bg-page"
     ></iframe>
-    <div class="hidden shrink-0 items-center gap-2 border-t border-line px-3 py-2 max-[760px]:flex">
-      <a href={site.resume} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 flex-1 items-center justify-center gap-2 border border-line px-2 text-xs font-semibold">
-        Open full PDF <span aria-hidden="true">↗</span>
+    <div class="resume-actions hidden shrink-0 items-center gap-2 border-t border-line bg-page px-4 py-3 max-[760px]:flex">
+      <a href={site.resume} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-12 min-w-0 flex-1 items-center justify-center gap-1.5 border border-line px-2 text-center text-[12px] leading-tight font-semibold hover:bg-panel">
+        Open PDF <span aria-hidden="true">↗</span>
       </a>
-      <a href={downloadUrl} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 flex-1 items-center justify-center gap-2 border border-brand bg-brand px-2 text-xs font-semibold text-white hover:bg-brand-hover hover:text-white">
-        Download CV <span aria-hidden="true">↓</span>
+      <a href={site.resume} download="Liel-Almog-Resume.pdf" class="inline-flex min-h-12 min-w-0 flex-1 items-center justify-center gap-1.5 border border-brand bg-brand px-2 text-center text-[12px] leading-tight font-semibold text-white hover:bg-brand-hover hover:text-white">
+        Download <span aria-hidden="true">↓</span>
       </a>
     </div>
   </div>
@@ -45,61 +45,36 @@ const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
     width: min(calc(100% - 32px), 1100px);
     height: 90dvh;
     max-height: calc(100dvh - 32px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    box-sizing: border-box;
+  }
+
+  .resume-dialog:focus-visible {
+    outline: none;
   }
 
   @media (max-width: 760px) {
     .resume-dialog {
+      inset: 0;
       width: 100%;
       height: 100dvh;
+      max-width: none;
       max-height: 100dvh;
       border: 0;
       margin: 0;
     }
 
-    .resume-dialog > div > div:first-child {
-      padding-top: calc(6px + env(safe-area-inset-top, 0px));
-      padding-left: calc(12px + env(safe-area-inset-left, 0px));
-      padding-right: calc(12px + env(safe-area-inset-right, 0px));
+    .resume-header {
+      padding-top: calc(12px + env(safe-area-inset-top, 0px));
+      padding-left: calc(16px + env(safe-area-inset-left, 0px));
+      padding-right: calc(16px + env(safe-area-inset-right, 0px));
     }
 
-    .resume-dialog > div > div:last-child {
-      padding-bottom: env(safe-area-inset-bottom, 0px);
+    .resume-actions {
+      padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+      padding-left: calc(16px + env(safe-area-inset-left, 0px));
+      padding-right: calc(16px + env(safe-area-inset-right, 0px));
     }
   }
 </style>
 
-<script>
-  const dialog = document.querySelector<HTMLDialogElement>('#resume-dialog');
-  if (dialog) {
-    const viewer = dialog.querySelector('iframe');
-    let previousOverflow = '';
-
-    document.querySelectorAll<HTMLAnchorElement>('[data-resume-dialog]').forEach((link) => {
-      link.setAttribute('aria-haspopup', 'dialog');
-      link.setAttribute('aria-controls', dialog.id);
-      link.addEventListener('click', (event) => {
-        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-        event.preventDefault();
-        if (dialog.open) return;
-        if (viewer?.dataset.src && !viewer.hasAttribute('src')) {
-          viewer.src = viewer.dataset.src;
-        }
-        previousOverflow = document.documentElement.style.overflow;
-        dialog.showModal();
-        document.documentElement.style.overflow = 'hidden';
-      });
-    });
-
-    dialog.addEventListener('close', () => {
-      document.documentElement.style.overflow = previousOverflow;
-    });
-    dialog.addEventListener('click', (event) => {
-      if (event.target !== dialog) return;
-      const bounds = dialog.getBoundingClientRect();
-      if (event.clientX < bounds.left || event.clientX > bounds.right ||
-          event.clientY < bounds.top || event.clientY > bounds.bottom) {
-        dialog.close();
-      }
-    });
-  }
-</script>
+<script src="../../scripts/resume-dialog.ts"></script>

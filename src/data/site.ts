@@ -5,8 +5,7 @@ export const site = {
   description:
     "Liel Almog is a senior software engineer and backend developer in Israel, building reliable APIs, distributed systems, cloud platforms, and complete production software.",
   url: "https://lielalmog.com/",
-  resume:
-    "https://drive.google.com/file/d/1AbB6Vjbb5ounpVu8iiSvlJWv3MMrquCp/view?usp=sharing",
+  resume: "https://resume.lielalmog.com/resume.pdf",
   email: "job@lielalmog.com",
   profiles: [
     { name: "GitHub", href: "https://github.com/liel-almog" },

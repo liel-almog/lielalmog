@@ -13,16 +13,16 @@ import { site } from '../../data/site';
     </div>
     <div class="grid min-w-0">
       <a class="flex flex-col gap-1.25 border-t border-[#ccd1c5] py-4.25" href={`mailto:${site.email}`}>
-        <small class="font-mono text-[9px] tracking-[.1em] text-subtle">EMAIL</small>
+        <small class="font-mono text-[9px] tracking-widest text-subtle">EMAIL</small>
         <span class="site-text-link w-fit max-w-full text-[17px] wrap-anywhere">{site.email} ↗</span>
       </a>{site.profiles.map(p => <a class="flex flex-col gap-1.25 border-t border-[#ccd1c5] py-4.25" href={p.href}>
-        <small class="font-mono text-[9px] tracking-[.1em] text-subtle">{p.name.toUpperCase()}</small>
+        <small class="font-mono text-[9px] tracking-widest text-subtle">{p.name.toUpperCase()}</small>
         <span class="site-text-link w-fit max-w-full text-[17px] wrap-anywhere">{p.name === 'GitHub' ? 'Explore my code' : 'Let’s connect'} ↗</span>
       </a>)}<a class="flex flex-col gap-1.25 border-t border-[#ccd1c5] py-4.25 max-[760px]:hidden" href={site.resume} data-resume-dialog>
-        <small class="font-mono text-[9px] tracking-[.1em] text-subtle">RESUME</small>
+        <small class="font-mono text-[9px] tracking-widest text-subtle">RESUME</small>
         <span class="site-text-link w-fit max-w-full text-[17px] wrap-anywhere">View my experience ↗</span>
-      </a><a class="hidden flex-col gap-1.25 border-t border-[#ccd1c5] py-4.25 max-[760px]:flex" href={site.resume} target="_blank" rel="noopener noreferrer">
-        <small class="font-mono text-[9px] tracking-[.1em] text-subtle">RESUME</small>
+      </a><a class="hidden flex-col gap-1.25 border-t border-[#ccd1c5] py-4.25 max-[760px]:flex" href={site.resume} data-resume-dialog>
+        <small class="font-mono text-[9px] tracking-widest text-subtle">RESUME</small>
         <span class="site-text-link w-fit max-w-full text-[17px] wrap-anywhere">View my experience ↗</span>
       </a>
     </div>
