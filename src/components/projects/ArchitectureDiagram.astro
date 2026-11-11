@@ -14,9 +14,9 @@ const firstStep = project.architecture[0];
   <div class="grid grid-cols-[minmax(0,2fr)_minmax(15rem,1fr)] items-start gap-6 max-[900px]:grid-cols-1">
     <ol class="grid gap-3 sm:grid-cols-2" aria-label={`${project.name} architecture`}>
       {project.architecture.map((step, index) => (
-        <li>
+        <li class="min-w-0">
           <button
-            class="h-full min-h-28 w-full rounded-lg border border-line bg-page/55 p-4 text-left enabled:cursor-pointer enabled:hover:border-line-strong aria-pressed:border-accent aria-pressed:bg-accent/8"
+            class="h-full min-h-28 wrap-anywhere w-full rounded-lg border border-line bg-page/55 p-4 text-left enabled:cursor-pointer enabled:hover:border-line-strong aria-pressed:border-accent aria-pressed:bg-accent/8"
             type="button"
             data-architecture-node
             data-title={step.title}
@@ -32,7 +32,7 @@ const firstStep = project.architecture[0];
         </li>
       ))}
     </ol>
-    <aside class="rounded-lg border border-accent/25 bg-accent/5 p-5" id={`architecture-detail-${project.id}`} data-architecture-detail aria-live="polite" aria-atomic="true" hidden>
+    <aside class="min-w-0 wrap-anywhere rounded-lg border border-accent/25 bg-accent/5 p-5" id={`architecture-detail-${project.id}`} data-architecture-detail aria-live="polite" aria-atomic="true" hidden>
       <p class="mb-3 font-mono text-[0.6rem] tracking-widest text-subtle uppercase">Selected component</p>
       <h4 class="text-lg font-bold text-accent" data-detail-title>{firstStep.title}</h4>
       <p class="mt-3 text-sm leading-7 text-muted" data-detail-copy>{firstStep.description}</p>

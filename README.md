@@ -4,17 +4,17 @@
 
 I design, build, and own reliable software from backend architecture through production. Since 2021, I have worked across APIs, distributed systems, cloud platforms, developer infrastructure, and responsive web products.
 
-[View my portfolio](https://liel-almog.github.io/) · [Connect on LinkedIn](https://www.linkedin.com/in/liel-almog-454158335/) · [Explore my GitHub](https://github.com/liel-almog)
+[View my portfolio](https://lielalmog.com/) · [Connect on LinkedIn](https://www.linkedin.com/in/liel-almog-454158335/) · [Explore my GitHub](https://github.com/liel-almog)
 
 ## Development
 
-Install the dependencies with `npm install`, then run `npm run dev` to rebuild the Tailwind stylesheet while editing. Run `npm run build` before publishing.
+Use Node 24 and install dependencies with `npm ci`. Run `npm run check` for Astro and TypeScript diagnostics and `npm run build` for the production build.
 
-An independent Astro application is being built incrementally in [`astro/`](astro/README.md).
-It currently includes the shared layout, navigation, hero, intro video, experience timeline, technical expertise, projects explorer, and footer. To work on
-it, use Node 24 and run `cd astro`, `nvm use`, `npm ci`, and `npm run dev`.
-The existing root build remains the production site during migration. See the
-[migration guide](astro/README.md) for component boundaries and the next stages.
+The app lives in `src/`. Tailwind CSS 4 runs through the Vite plugin configured in `astro.config.mjs`. Shared theme tokens live in `src/styles/tailwind.css`; layout, responsive, and component styling live alongside their markup. `BaseLayout.astro` owns site-wide element defaults such as focus indicators.
+
+Homepage sections live in `src/components/home/`, with shared headings, buttons, and technology tags in `src/components/ui/`. Project detail pages reuse the architecture component and its progressive enhancement script.
+
+Use the existing development server when one is running. To start a server when needed, use `astro dev --background`; manage it with `astro dev status`, `astro dev logs`, and `astro dev stop`.
 
 ## What I work on
 
@@ -60,9 +60,9 @@ Developed production applications on Microsoft Azure in a microservice architect
 
 A per-process firewall spanning a React control plane, FastAPI backend, MongoDB persistence, a Go host agent, and kernel-level eBPF enforcement.
 
-### [Go Eight Puzzle Solver](https://github.com/liel-almog/go-eight-puzzle-solver)
+### [Algo Studio](https://algorithms.lielalmog.com/)
 
-An interactive Go and TypeScript application that solves configurable sliding puzzles using breadth-first, depth-first, and A\* search.
+A React and TypeScript playground backed by a Go API for exploring search, graph, and randomized verification algorithms.
 
 ### [Package Vulnerability Detector](https://github.com/liel-almog/package-vulnerability-detector)
 

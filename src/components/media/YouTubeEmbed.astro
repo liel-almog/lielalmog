@@ -8,7 +8,7 @@ const { videoId, title } = Astro.props;
 const src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}`;
 ---
 
-<div class="aspect-video min-w-0 overflow-hidden rounded-[0.4rem] border border-line-strong bg-black shadow-panel">
+<div class="aspect-video min-w-0 overflow-hidden rounded-sm border border-line-strong bg-black shadow-[6px_6px_0_#dce2d4] max-[760px]:shadow-[4px_4px_0_#dce2d4]">
   <iframe
     class="block size-full border-0"
     src={src}

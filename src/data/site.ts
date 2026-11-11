@@ -1,5 +1,3 @@
-import { featuredProject } from './projects';
-
 export const site = {
   name: "Liel Almog",
   role: "Senior Software Engineer & Backend Developer",
@@ -9,7 +7,7 @@ export const site = {
   url: "https://lielalmog.com/",
   resume:
     "https://drive.google.com/drive/folders/15Nr72FC4d_oyjNiCR-VU9ReDNCHlDwbJ",
-  email: "train-fit-frantic@duck.com",
+  email: "job@lielalmog.com",
   profiles: [
     { name: "GitHub", href: "https://github.com/liel-almog" },
     {
@@ -18,15 +16,3 @@ export const site = {
     },
   ],
 } as const;
-
-// Switch each destination to a local anchor when its Astro section is ready.
-export const legacySection = (id: string) => `${site.url}#${id}`;
-
-export const navigation = [
-  { label: "60-second intro", href: "/#intro-video" },
-  { label: "Experience", href: "/#experience" },
-  { label: "Expertise", href: "/#expertise" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Algo Studio", href: featuredProject.href, external: true },
-  { label: "Contact", href: "/#contact" },
-] as const;
