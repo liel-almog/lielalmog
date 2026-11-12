@@ -10,16 +10,16 @@ import { projects } from '../../data/projects';
     <SectionHeading id="projects-title" eyebrow="03 / Selected projects" heading="An instinct to" emphasis="go deeper." inverted>
       From a Go API to the Linux kernel: working systems that explore security, algorithms, and the tools developers depend on.
     </SectionHeading>
-    <div class="grid gap-6">{projects.map((project,index) => <article class="grid grid-cols-[minmax(0,.8fr)_minmax(0,1.2fr)] border border-[#5a6b5b] max-[900px]:grid-cols-1">
+    <div class="grid grid-cols-3 gap-6 max-[900px]:grid-cols-1">{projects.map((project,index) => <article class="grid min-w-0 row-span-6 grid-rows-subgrid gap-0 border border-[#5a6b5b]">
         <ProjectIllustration projectId={project.id} index={index} />
-        <div class="min-w-0 p-8.5 max-[1050px]:p-6.25 max-[760px]:px-5 max-[760px]:py-6.25">
+        <div class="grid min-w-0 row-span-5 grid-rows-subgrid gap-0 p-8.5 max-[1050px]:p-6.25 max-[760px]:px-5 max-[760px]:py-6.25">
           <p class="mb-3.5 text-[#d9ae91] font-mono text-[9px] font-medium tracking-[.09em] uppercase leading-[1.6]">{project.category}</p>
           <h3 class="text-[29px] leading-[1.1] font-[650] tracking-[-.035em] wrap-anywhere max-[1050px]:text-[25px] max-[760px]:text-[26px]">
             <a class="site-text-link hover:text-[#edb18d]" href={`/projects/${project.id}/`}>{project.name}</a>
           </h3>
           <p class="mt-4.5 text-[14px] leading-[1.85] text-on-brand">{project.summary}</p>
-          <TagList items={project.technologies} label={`${project.name} technologies`} inverted class="mt-5.5" />
-          <div class="flex flex-wrap gap-[12px_26px] mt-5 items-center max-[760px]:gap-[5px_20px]">
+          <TagList items={project.technologies} label={`${project.name} technologies`} inverted class="mt-5.5 items-start content-start" />
+          <div class="flex flex-wrap content-start gap-[12px_26px] mt-5 items-center max-[760px]:gap-[5px_20px]">
             <a class="site-text-link hover:text-[#edb18d] inline-flex items-center gap-2 min-h-11 text-[12px] font-semibold" href={`/projects/${project.id}/`}>Read case study <span aria-hidden="true">→</span>
               <span class="sr-only">: {project.name}</span>
             </a>

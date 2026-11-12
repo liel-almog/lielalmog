@@ -9,7 +9,7 @@ import { experiences } from '../../data/experience';
   <SectionHeading id="experience-title" eyebrow="02 / Professional experience" heading="Growing scope." emphasis="Deeper ownership.">
     From cloud applications to internal platforms and resource allocation systems. A career built around making complex software work in production.
   </SectionHeading>
-  <div class="mb-4">{experiences.map((role,index) => <article class="grid grid-cols-[max-content_minmax(0,1fr)_245px] gap-8.75 py-8.75 border-t border-[#ccd1c5] max-[1050px]:grid-cols-[max-content_minmax(0,1fr)] max-[1050px]:gap-6.25 max-[760px]:grid-cols-1 max-[760px]:gap-4 max-[760px]:py-7" aria-labelledby={`${role.id}-title`}>
+  <div class="mb-4 grid grid-cols-[max-content_minmax(0,1fr)_245px] gap-x-8.75 max-[1050px]:grid-cols-[max-content_minmax(0,1fr)] max-[1050px]:gap-x-6.25 max-[760px]:grid-cols-1">{experiences.map((role,index) => <article class="col-span-full grid grid-cols-subgrid gap-8.75 py-8.75 border-t border-[#ccd1c5] max-[1050px]:gap-6.25 max-[760px]:gap-4 max-[760px]:py-7" aria-labelledby={`${role.id}-title`}>
       <div class="max-[760px]:flex max-[760px]:flex-wrap max-[760px]:justify-between max-[760px]:gap-x-3.75 max-[760px]:gap-y-1 max-[760px]:items-start max-[400px]:flex-col">
         <span class="text-accent font-mono text-[.69rem] font-medium tracking-[.09em] uppercase leading-[1.6]">{index === 0 ? 'CURRENT ROLE' : `0${index + 1}`}</span>
         <p class="mt-3.5 whitespace-nowrap text-[12px] leading-[1.8] text-muted max-[760px]:m-0 max-[760px]:text-right max-[400px]:text-left max-[760px]:text-[11px]">
