@@ -12,6 +12,16 @@ function initResumeDialog() {
   );
   if (preview && template) preview.append(template.content.cloneNode(true));
 
+  const visualViewport = window.visualViewport;
+  if (isMobileDevice && preview && visualViewport) {
+    const updateZoomScrolling = () => {
+      // Containment also blocks Android from panning the pinch-zoomed viewport.
+      preview.style.overscrollBehavior = visualViewport.scale > 1 ? "auto" : "";
+    };
+    visualViewport.addEventListener("resize", updateZoomScrolling);
+    updateZoomScrolling();
+  }
+
   let previousOverflow = "";
 
   document
