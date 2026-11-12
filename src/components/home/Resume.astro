@@ -26,13 +26,22 @@ import { site } from '../../data/site';
         <button aria-label="Close resume" class="inline-flex min-h-11 cursor-pointer items-center justify-center gap-1.5 px-2 text-[13px] leading-none font-semibold text-muted hover:text-foreground"><span>Close</span><span class="text-lg font-normal" aria-hidden="true">×</span></button>
       </form>
     </div>
-    <div class="@container min-h-0 min-w-0 flex-1 overflow-auto overscroll-contain [-webkit-overflow-scrolling:touch]" role="region" aria-label="Scrollable resume PDF" tabindex="0">
-      <iframe
-        src={`${site.resume}#view=FitH`}
-        title="Liel Almog’s resume PDF"
-        class="block h-full w-full border-0 bg-page
-          max-[760px]:h-[max(100%,calc(100cqw*1.4142_+_56px))]"
-      ></iframe>
+    <div data-resume-preview class="min-h-0 min-w-0 flex-1 overflow-auto overscroll-contain [-webkit-overflow-scrolling:touch]" role="region" aria-label="Scrollable resume" tabindex="0">
+      <template data-resume-image>
+        <img
+          src={site.resumePreview}
+          alt="Liel Almog’s resume"
+          decoding="async"
+          class="block h-auto w-full bg-white"
+        />
+      </template>
+      <template data-resume-pdf>
+        <iframe
+          src={`${site.resume}#view=FitH`}
+          title="Liel Almog’s resume PDF"
+          class="block h-full w-full border-0 bg-page"
+        ></iframe>
+      </template>
     </div>
     <div class="hidden shrink-0 items-center gap-2 border-t border-line bg-page px-4 py-3
       max-[760px]:flex max-[760px]:pb-[calc(12px_+_env(safe-area-inset-bottom,0px))] max-[760px]:pl-[calc(16px_+_env(safe-area-inset-left,0px))] max-[760px]:pr-[calc(16px_+_env(safe-area-inset-right,0px))]">
