@@ -61,8 +61,12 @@ const algorithmTiles = Array.from({ length: 8 }, (_, i) => i + 1);
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Open Algo Studio"
-        class="algo-easter-egg relative z-10 grid h-12 place-items-center bg-[#a85b3c] font-serif text-[22px] leading-normal text-white transition-transform duration-200 hover:scale-110 focus-visible:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a85b3c]"
-      >↗<span class="algo-easter-egg__hint" aria-hidden="true">Psst… try Algo Studio ↗</span></a>
+        class="algo-easter-egg relative z-10 grid h-12 place-items-center bg-[#a85b3c] text-white transition-transform duration-200 hover:scale-110 focus-visible:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a85b3c]"
+      >
+        <svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M7 17 17 7M7 7h10v10" />
+        </svg>
+      </a>
     </div>
   )}
 
@@ -83,33 +87,8 @@ const algorithmTiles = Array.from({ length: 8 }, (_, i) => i + 1);
 </div>
 
 <style>
-  .algo-easter-egg__hint {
-    position: absolute;
-    top: 50%;
-    right: calc(100% + 10px);
-    width: max-content;
-    max-width: min(220px, 55vw);
-    padding: 5px 9px;
-    transform: translate(4px, -50%);
-    border: 1px solid #a85b3c;
-    background: #f5f2e9;
-    color: #303a31;
-    font: 10px/1.4 ui-monospace, monospace;
-    letter-spacing: .02em;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .18s ease, transform .18s ease;
-  }
-
-  .algo-easter-egg:hover .algo-easter-egg__hint,
-  .algo-easter-egg:focus-visible .algo-easter-egg__hint {
-    opacity: 1;
-    transform: translate(0, -50%);
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .algo-easter-egg,
-    .algo-easter-egg__hint {
+    .algo-easter-egg {
       transition: none;
     }
   }
