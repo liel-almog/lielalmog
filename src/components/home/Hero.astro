@@ -1,0 +1,63 @@
+---
+import ButtonLink from '../ui/ButtonLink.astro';
+import { site } from '../../data/site';
+---
+
+<section class="grid grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] gap-[7%] items-center pt-22 pb-19 min-[1500px]:py-27.5 max-[1050px]:gap-[5%] max-[1050px]:py-16.25 max-[900px]:grid-cols-1 max-[760px]:py-11.25 max-[900px]:gap-8.75 w-[calc(100%-96px)] max-w-site mx-auto max-[1050px]:w-[calc(100%-56px)] max-[760px]:w-[calc(100%-40px)] max-[400px]:w-[calc(100%-32px)]" id="top" aria-labelledby="hero-title">
+  <div class="min-w-0">
+    <p class="mb-6.25 flex items-center gap-2.5 max-[760px]:mb-5.5 max-[760px]:text-[10px] font-mono text-[.69rem] font-medium tracking-[.09em] uppercase leading-[1.6]">
+      <span class="inline-block w-1.75 h-1.75 bg-[#b75132] shrink-0">
+      </span> Liel Almog · Based in Israel</p>
+    <h1 class="text-[clamp(3.5rem,5.5vw,5.5rem)] leading-[1.02] font-[550] tracking-[-.065em] max-[1050px]:text-[60px] max-[900px]:text-[clamp(2.5rem,10vw,4.5rem)]" id="hero-title">Senior backend<br/>
+      <span class="text-accent font-serif font-normal italic tracking-[-.055em]">engineer.</span>
+    </h1>
+    <p class="text-[21px] leading-[1.45] mt-6.5 font-medium tracking-[-.02em] max-[760px]:text-[20px]">Complex systems.<br/>Clear thinking. Dependable software.</p>
+    <p class="text-[15px] leading-[1.85] text-muted max-w-127.5 mt-4 max-[760px]:text-[14px]">I build APIs, distributed systems, and cloud platforms - and own the work from architecture to production. Engineering across backend and product since 2021.</p>
+    <div class="mt-7.5 flex flex-wrap gap-2.5 max-[480px]:flex-col">
+      <div class="max-[760px]:hidden"><ButtonLink href={site.resume} variant="primary" arrow="↗" resumeDialog>View resume</ButtonLink></div>
+      <div class="hidden max-[760px]:block max-[480px]:w-full"><ButtonLink href={site.resume} variant="primary" arrow="↗" resumeDialog>View resume</ButtonLink></div>
+      <ButtonLink href="#experience" arrow="↓">Explore my experience</ButtonLink>
+    </div>
+    <div class="mt-6.25 max-[760px]:mt-3.5">
+      <div class="inline-flex max-w-full flex-wrap items-center gap-x-6.5 text-[13px] font-medium">
+        {site.profiles.map(p => <a class="site-text-link inline-flex min-h-11 items-center gap-1.5" href={p.href}>{p.name} <span class="text-accent" aria-hidden="true">↗</span>
+        </a>)}<a class="site-text-link inline-flex min-h-11 items-center gap-1.5" href={`mailto:${site.email}`}>Email me <span class="text-accent" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <aside class="min-w-0 bg-panel border border-[#c4cebd] px-7.5 py-6.5 relative shadow-[10px_10px_0_#edebe3] max-[1050px]:p-5 max-[760px]:p-5 max-[400px]:p-4 max-[760px]:shadow-[6px_6px_0_#edebe3]" aria-labelledby="system-title">
+    <div class="flex justify-between font-mono text-[9px] tracking-[.08em] pb-8 border-t-3 border-brand pt-3.5 max-[760px]:pb-5.5">
+      <span>ENGINEERING PROFILE</span>
+      <span>01 / LA</span>
+    </div>
+    <h2 class="text-[34px] leading-[1.1] font-[550] tracking-[-.04em] max-[760px]:text-[29px]" id="system-title">Built beneath<br/>the surface.</h2>
+    <p class="text-[#56624f] text-[12px] mt-3 mb-6.25">My focus, across the system.</p>
+    <ol class="list-none m-0 p-0">
+      <li class="flex items-center gap-4 border-t border-[#c4cebd] py-5.5 max-[760px]:py-4.25">
+        <span class="font-mono text-[11px] leading-normal font-normal text-[#68735f]">01</span>
+        <div class="min-w-0 wrap-anywhere">
+          <strong class="text-[15px] font-semibold">Services & APIs</strong>
+          <small class="mt-1.75 block font-mono text-[10px] leading-normal text-[#56624f]">Go / Python / TypeScript</small>
+        </div>
+      </li>
+      <li class="flex items-center gap-4 border-t border-[#c4cebd] py-5.5 max-[760px]:py-4.25">
+        <span class="font-mono text-[11px] leading-normal font-normal text-[#68735f]">02</span>
+        <div class="min-w-0 wrap-anywhere">
+          <strong class="text-[15px] font-semibold">Distributed systems</strong>
+          <small class="mt-1.75 block font-mono text-[10px] leading-normal text-[#56624f]">Concurrency / Events / Data</small>
+        </div>
+      </li>
+      <li class="flex items-center gap-4 border-t border-[#c4cebd] py-5.5 max-[760px]:py-4.25">
+        <span class="font-mono text-[11px] leading-normal font-normal text-[#68735f]">03</span>
+        <div class="min-w-0 wrap-anywhere">
+          <strong class="text-[15px] font-semibold">Cloud & platforms</strong>
+          <small class="mt-1.75 block font-mono text-[10px] leading-normal text-[#56624f]">Azure / Kubernetes / OpenShift</small>
+        </div>
+      </li>
+    </ol>
+    <div class="border-t border-[#c4cebd] pt-4.75 flex flex-wrap items-center gap-2.5 font-mono text-[9px] leading-normal font-normal max-[1050px]:text-[8px] max-[760px]:text-[9px]">
+      <span class="inline-block w-1.75 h-1.75 bg-[#b75132] shrink-0">
+      </span> Architecture → Delivery → Operation</div>
+  </aside>
+</section>

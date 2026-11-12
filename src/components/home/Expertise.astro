@@ -1,0 +1,26 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import TagList from '../ui/TagList.astro';
+import { skillGroups } from '../../data/expertise';
+---
+
+<section class="py-23 max-[760px]:py-14.5 w-[calc(100%-96px)] max-w-site mx-auto max-[1050px]:w-[calc(100%-56px)] max-[760px]:w-[calc(100%-40px)] max-[400px]:w-[calc(100%-32px)]" id="expertise" aria-labelledby="expertise-title">
+  <SectionHeading id="expertise-title" eyebrow="04 / Technical strengths" heading="Backend depth." emphasis="System-wide perspective.">
+    I choose tools around the system’s constraints, with the range to connect infrastructure, services, and the product experience.
+  </SectionHeading>
+  <div class="grid grid-cols-6 border-t border-[#ccd1c5] max-[760px]:grid-cols-1">{skillGroups.map((group,index) => <article
+      class:list={[
+        'border-[#ccd1c5] py-7 pr-6.5 max-[760px]:py-6.25 max-[760px]:pr-0',
+        index < 3 ? 'col-span-2' : 'col-span-3 border-t',
+        index === skillGroups.length - 1 ? 'max-[1050px]:col-span-full' : 'max-[1050px]:col-span-3 max-[760px]:col-span-full',
+        index === 2 && 'max-[1050px]:border-t',
+        index > 0 && 'max-[760px]:border-t',
+      ]}
+      aria-labelledby={`expertise-${group.id}-title`}
+    >
+      <span class="text-accent font-mono text-[.69rem] font-medium tracking-[.09em] uppercase leading-[1.6]">0{index+1}</span>
+      <h3 id={`expertise-${group.id}-title`} class="my-4 text-[21px] leading-[1.1] font-[650] tracking-[-.035em]">{group.title}</h3>
+      <p class="mb-5 text-[13px] leading-[1.8] text-muted">{group.description}</p>
+      <TagList items={group.technologies} label={`${group.title} technologies`} />
+    </article>)}</div>
+</section>

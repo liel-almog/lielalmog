@@ -5,6 +5,7 @@ import cloudflare from "@astrojs/cloudflare";
 export default defineConfig({
   site: "https://lielalmog.com",
   output: "static",
+  session: false,
   vite: {
     plugins: [tailwindcss()],
   },

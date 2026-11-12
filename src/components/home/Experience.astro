@@ -1,0 +1,33 @@
+---
+import { site } from '../../data/site';
+import SectionHeading from '../ui/SectionHeading.astro';
+import TagList from '../ui/TagList.astro';
+import { experiences } from '../../data/experience';
+---
+
+<section class="py-23 max-[760px]:py-14.5 w-[calc(100%-96px)] max-w-site mx-auto max-[1050px]:w-[calc(100%-56px)] max-[760px]:w-[calc(100%-40px)] max-[400px]:w-[calc(100%-32px)]" id="experience" aria-labelledby="experience-title">
+  <SectionHeading id="experience-title" eyebrow="02 / Professional experience" heading="Growing scope." emphasis="Deeper ownership.">
+    From cloud applications to internal platforms and resource allocation systems. A career built around making complex software work in production.
+  </SectionHeading>
+  <div class="mb-4">{experiences.map((role,index) => <article class="grid grid-cols-[max-content_minmax(0,1fr)_245px] gap-8.75 py-8.75 border-t border-[#ccd1c5] max-[1050px]:grid-cols-[max-content_minmax(0,1fr)] max-[1050px]:gap-6.25 max-[760px]:grid-cols-1 max-[760px]:gap-4 max-[760px]:py-7" aria-labelledby={`${role.id}-title`}>
+      <div class="max-[760px]:flex max-[760px]:flex-wrap max-[760px]:justify-between max-[760px]:gap-x-3.75 max-[760px]:gap-y-1 max-[760px]:items-start max-[400px]:flex-col">
+        <span class="text-accent font-mono text-[.69rem] font-medium tracking-[.09em] uppercase leading-[1.6]">{index === 0 ? 'CURRENT ROLE' : `0${index + 1}`}</span>
+        <p class="mt-3.5 whitespace-nowrap text-[12px] leading-[1.8] text-muted max-[760px]:m-0 max-[760px]:text-right max-[400px]:text-left max-[760px]:text-[11px]">
+          <time datetime={role.start.date}>{role.start.label}</time> - {role.end ? <time datetime={role.end.date}>{role.end.label}</time> : 'Present'}</p>
+      </div>
+      <div class="min-w-0">
+        <h3 id={`${role.id}-title`} class="text-[25px] leading-[1.1] font-[650] tracking-[-.035em] max-[760px]:text-[23px]">{role.title}</h3>
+        <p class="text-[11px] tracking-[.03em] text-[#6a7167] mt-2.5 mb-4.75 max-[760px]:mb-3.25">{role.focus}</p>
+        <p class="text-[14px] leading-[1.8] text-muted">{role.summary}</p>
+        <ul class="text-[14px] leading-[1.8] text-muted list-disc pl-4.25 mt-3.5">{role.highlights.map(h => <li class="mt-1 pl-0.75">{h}</li>)}</ul>
+      </div>
+      <div class="max-[1050px]:col-start-2 max-[760px]:col-auto">
+        <p class="mb-3.75 text-subtle max-[760px]:mb-2.25 font-mono text-[.69rem] font-medium tracking-[.09em] uppercase leading-[1.6]">Stack & systems</p>
+        <TagList items={[...role.technologies, ...('services' in role ? role.services : [])]} label={`${role.title} stack and systems`} />
+      </div>
+    </article>)}</div>
+  <a class="site-text-link inline-flex items-center gap-5 min-h-11 text-[13px] font-semibold max-[760px]:hidden" href={site.resume} data-resume-dialog>View full resume <span aria-hidden="true">↗</span>
+  </a>
+  <a class="site-text-link hidden items-center gap-5 min-h-11 text-[13px] font-semibold max-[760px]:inline-flex" href={site.resume} data-resume-dialog>View full resume <span aria-hidden="true">↗</span>
+  </a>
+</section>

@@ -1,0 +1,30 @@
+---
+import { site } from '../../data/site';
+---
+
+<section class="border-t border-line bg-panel" id="contact" aria-labelledby="contact-title">
+  <div class="grid grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] gap-[12%] items-center max-[1050px]:gap-[6%] max-[900px]:grid-cols-1 max-[900px]:gap-7.5 w-[calc(100%-96px)] max-w-site mx-auto max-[1050px]:w-[calc(100%-56px)] max-[760px]:w-[calc(100%-40px)] max-[400px]:w-[calc(100%-32px)] py-23 max-[760px]:py-14.5">
+    <div class="min-w-0">
+      <p class="text-accent font-mono text-[.69rem] font-medium tracking-[.09em] uppercase leading-[1.6]">05 / Get in touch</p>
+      <h2 class="mt-5 mb-6.25 text-[clamp(2.2rem,4vw,3.5rem)] leading-[1.1] font-[550] tracking-[-.045em] wrap-anywhere max-[760px]:text-[clamp(1.75rem,7.5vw,2.75rem)]" id="contact-title">Let’s build<br/>
+        <span class="font-serif font-normal italic tracking-[-.055em]">something dependable.</span>
+      </h2>
+      <p class="max-w-100 text-[15px] text-muted">Hiring a senior backend engineer? Let’s talk about your team and the systems you’re building.</p>
+    </div>
+    <div class="grid min-w-0">
+      <a class="flex flex-col gap-1.25 border-t border-[#ccd1c5] py-4.25" href={`mailto:${site.email}`}>
+        <small class="font-mono text-[9px] tracking-widest text-subtle">EMAIL</small>
+        <span class="site-text-link w-fit max-w-full text-[17px] wrap-anywhere">{site.email} ↗</span>
+      </a>{site.profiles.map(p => <a class="flex flex-col gap-1.25 border-t border-[#ccd1c5] py-4.25" href={p.href}>
+        <small class="font-mono text-[9px] tracking-widest text-subtle">{p.name.toUpperCase()}</small>
+        <span class="site-text-link w-fit max-w-full text-[17px] wrap-anywhere">{p.name === 'GitHub' ? 'Explore my code' : 'Let’s connect'} ↗</span>
+      </a>)}<a class="flex flex-col gap-1.25 border-t border-[#ccd1c5] py-4.25 max-[760px]:hidden" href={site.resume} data-resume-dialog>
+        <small class="font-mono text-[9px] tracking-widest text-subtle">RESUME</small>
+        <span class="site-text-link w-fit max-w-full text-[17px] wrap-anywhere">View my experience ↗</span>
+      </a><a class="hidden flex-col gap-1.25 border-t border-[#ccd1c5] py-4.25 max-[760px]:flex" href={site.resume} data-resume-dialog>
+        <small class="font-mono text-[9px] tracking-widest text-subtle">RESUME</small>
+        <span class="site-text-link w-fit max-w-full text-[17px] wrap-anywhere">View my experience ↗</span>
+      </a>
+    </div>
+  </div>
+</section>

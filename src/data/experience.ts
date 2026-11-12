@@ -10,15 +10,6 @@ export interface Experience {
   services?: readonly string[];
 }
 
-export const experienceSection = {
-  eyebrow: "Professional experience",
-  heading: "Growing scope.",
-  emphasis: "Deeper ownership.",
-  description:
-    "Since 2021, I have worked across backend, cloud, platform, and frontend boundaries to ship production software that teams can maintain and operate.",
-  resumeLabel: "View full resume",
-} as const;
-
 // Most recent role first. A null end date identifies the current role.
 export const experiences = [
   {

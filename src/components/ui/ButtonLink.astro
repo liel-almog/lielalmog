@@ -3,22 +3,27 @@ interface Props {
   href: string;
   variant?: 'primary' | 'secondary';
   arrow?: string;
+  target?: '_blank';
+  resumeDialog?: boolean;
 }
 
-const { href, variant = 'secondary', arrow } = Astro.props;
+const { href, variant = 'secondary', arrow, target, resumeDialog = false } = Astro.props;
 const variants = {
-  primary: 'bg-accent text-page hover:bg-accent-bright hover:shadow-[0_0_0_5px_rgb(199_255_62/12%)]',
-  secondary: 'hover:bg-surface-light',
+  primary: 'border-brand bg-brand text-white hover:bg-brand-hover hover:text-white',
+  secondary: 'border-[#b7beb2] hover:bg-surface-light',
 };
 ---
 
 <a
   class:list={[
-    'inline-flex min-h-11 items-center justify-center gap-3 rounded-sm border border-line-strong px-4 py-[0.7rem] text-[0.85rem] font-[750] transition-[background-color,box-shadow] duration-160 ease-in-out motion-reduce:transition-none',
+    'inline-flex max-w-full min-h-12.5 max-[480px]:w-full items-center justify-between gap-6 border px-5 py-3 text-[13px] font-semibold',
     variants[variant],
   ]}
   href={href}
+  target={target}
+  rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+  data-resume-dialog={resumeDialog ? '' : undefined}
 >
   <slot />
-  {arrow && <span aria-hidden="true">{arrow}</span>}
+  {arrow && <span class="shrink-0" aria-hidden="true">{arrow}</span>}
 </a>

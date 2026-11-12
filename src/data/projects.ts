@@ -28,21 +28,6 @@ export interface Project extends ProjectPreview {
   readonly architecture: readonly [ArchitectureStep, ...ArchitectureStep[]];
 }
 
-export interface ProjectsSection {
-  readonly eyebrow: string;
-  readonly heading: string;
-  readonly emphasis: string;
-  readonly description: string;
-}
-
-export const projectsSection: ProjectsSection = {
-  eyebrow: "Selected projects",
-  heading: "Curiosity into code.",
-  emphasis: "From Go to the kernel.",
-  description:
-    "I’m enthusiastic about Go (Golang), systems programming, and understanding how software works beneath the surface. These projects turn that curiosity into working systems, from kernel-level security to search algorithms and developer tools.",
-};
-
 export const featuredProject: ProjectPreview = {
   name: "Algo Studio",
   category: "Interactive algorithm playground",

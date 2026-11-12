@@ -1,0 +1,27 @@
+---
+interface Props {
+  id: string;
+  eyebrow: string;
+  heading: string;
+  emphasis: string;
+  inverted?: boolean;
+}
+const { id, eyebrow, heading, emphasis, inverted = false } = Astro.props;
+---
+
+<div class="mb-12 grid grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-end gap-[12%] max-[1050px]:gap-[7%] max-[760px]:mb-7.5 max-[900px]:grid-cols-1 max-[900px]:gap-5.5">
+  <div class="min-w-0">
+    <p class:list={[
+      'mb-4.5 font-mono text-[.69rem] leading-[1.6] font-medium tracking-[.09em] uppercase max-[760px]:mb-3.5',
+      inverted ? 'text-[#e8ae8c]' : 'text-accent',
+    ]}>{eyebrow}</p>
+    <h2 id={id} class="text-[clamp(2.2rem,4vw,3.5rem)] leading-[1.1] font-[550] tracking-[-.045em] wrap-anywhere max-[760px]:text-[clamp(1.75rem,7.5vw,2.75rem)]">
+      {heading}<br />
+      <span class="font-serif font-normal italic tracking-[-.055em]">{emphasis}</span>
+    </h2>
+  </div>
+  <p class:list={[
+    'max-w-101.25 text-[15px] leading-[1.85] max-[760px]:max-w-full max-[760px]:text-[14px]',
+    inverted ? 'text-on-brand' : 'text-muted',
+  ]}><slot /></p>
+</div>

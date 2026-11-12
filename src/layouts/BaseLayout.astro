@@ -2,7 +2,8 @@
 import SeoHead from '../components/seo/SeoHead.astro';
 import SiteHeader from '../components/layout/SiteHeader.astro';
 import SiteFooter from '../components/layout/SiteFooter.astro';
-import '../styles/global.css';
+import Resume from '../components/home/Resume.astro';
+import '../styles/tailwind.css';
 
 interface Props {
   title?: string;
@@ -13,26 +14,41 @@ interface Props {
 ---
 
 <!doctype html>
-<html lang="en" class="scheme-dark scroll-smooth scroll-pt-24 motion-reduce:scroll-auto">
+<html lang="en" class="bg-page font-sans text-foreground [color-scheme:light] [font-synthesis:none] scroll-pt-30 max-[760px]:scroll-pt-36 motion-safe:scroll-smooth">
   <head><SeoHead {...Astro.props} /></head>
-  <body
-    class="bg-page bg-[radial-gradient(ellipse_at_82%_8%,rgb(173_232_53/9.5%),transparent_31rem)] font-sans leading-[1.65] text-foreground antialiased selection:bg-accent selection:text-page [&_:focus-visible]:outline-3 [&_:focus-visible]:outline-accent-bright [&_:focus-visible]:outline-offset-4"
-  >
-    <a
-      class="fixed top-4 left-4 z-100 -translate-y-[180%] bg-foreground px-[0.9rem] py-[0.65rem] font-[750] text-page focus:translate-y-0"
-      href="#main-content"
-    >Skip to content</a>
+  <body class="leading-[1.65] antialiased selection:bg-[#e5c6ab] selection:text-foreground">
+    <a class="fixed top-3 left-3 z-100 -translate-y-[200%] bg-foreground px-5 py-3 text-white focus:translate-y-0" href="#main-content">Skip to content</a>
     <SiteHeader />
     <main id="main-content" tabindex="-1"><slot /></main>
     <SiteFooter />
-    <div class="reading-progress" aria-hidden="true"></div>
-    <button class="motion-toggle" type="button" aria-pressed="false" hidden>
-      <span class="motion-indicator" aria-hidden="true"></span>
-      <span data-motion-label>Pause motion</span>
-    </button>
-    <script>
-      import { setupMotion } from '../scripts/motion';
-      setupMotion();
-    </script>
+    <Resume />
   </body>
 </html>
+
+<style is:global>
+  @layer base {
+    a {
+      text-underline-offset: 5px;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a:hover {
+      color: var(--color-accent);
+    }
+
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--color-accent);
+      outline-offset: 5px;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      a {
+        transition: color 0.15s, background-color 0.15s;
+      }
+    }
+  }
+</style>
