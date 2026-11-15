@@ -1,0 +1,108 @@
+---
+import '../styles/tailwind.css';
+import { site } from '../data/site';
+
+const linkedIn = site.profiles.find((profile) => profile.name === 'LinkedIn')!;
+---
+
+<!doctype html>
+<html lang="en" class="bg-page text-foreground font-sans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#f6f4ee" />
+    <title>Thanks for scanning · Liel</title>
+    <meta name="description" content="A little joke and a way to say hello." />
+    <link rel="icon" type="image/svg+xml" href="/lielalmog-favicon.svg" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page-shell">
+      <main id="main" tabindex="-1">
+        <section class="welcome" aria-labelledby="welcome-title">
+          <p class="eyebrow">Hi, curious stranger</p>
+          <h1 id="welcome-title">Thanks for<br /><em>playing along.</em></h1>
+          <p class="intro">I put a QR code on my shirt.<br />You scanned it. Here we are.</p>
+
+          <figure class="meme">
+            <!-- Replace public/b5ypln.jpg to swap the meme, and update the alt text and dimensions below. -->
+            <img src="/meme.jpeg" width="500" height="579" decoding="async" alt="A stick figure pokes at people at an event, saying: C’mon, scan my QR code." />
+            <figcaption>Pretty much how I imagined it. <span aria-hidden="true">:)</span></figcaption>
+          </figure>
+          <p class="sendoff">Thanks for stopping by.</p>
+        </section>
+
+        <section class="connection" aria-labelledby="connection-title">
+          <h2 id="connection-title">We can talk, too.</h2>
+          <p>If you see me around, come say hello.<br class="desktop-break" /> You can also find me here:</p>
+          <nav class="actions" aria-label="Keep in touch">
+            <a class="contact-link" href={`mailto:${site.email}`}>
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
+              <span>{site.email}</span><span class="arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="contact-link" href={linkedIn.href}>
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M5.4 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM3.7 8.5H7V21H3.7V8.5ZM9.5 8.5h3.2v1.7c.6-1.1 1.7-2 3.6-2 3.6 0 4.2 2.3 4.2 5.4V21h-3.3v-6.6c0-1.6 0-3.5-2.1-3.5s-2.4 1.7-2.4 3.4V21H9.5V8.5Z" /></svg>
+              <span>LinkedIn</span><span class="arrow" aria-hidden="true">↗</span>
+            </a>
+          </nav>
+        </section>
+      </main>
+      <footer>
+        <span>See you around, <span class="signature">Liel ♡</span></span>
+        <a href="/">A bit more about me <span aria-hidden="true">↗</span></a>
+      </footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  body { margin: 0; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  a { text-underline-offset: 5px; }
+  a:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 5px; }
+  .skip-link { position: fixed; top: 12px; left: 12px; z-index: 10; padding: 10px 16px; background: var(--color-brand); color: var(--color-page); transform: translateY(-200%); }
+  .skip-link:focus { transform: translateY(0); }
+  .page-shell { width: min(640px, calc(100% - 48px)); margin: auto; text-align: center; }
+  main { padding: 56px 0 0; }
+  .eyebrow { color: var(--color-subtle); font: 500 10px/1.6 ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; }
+  h1 { margin: 20px 0 18px; font-size: clamp(2.1rem, 6vw, 3.5rem); font-weight: 500; letter-spacing: -.055em; line-height: 1.1; }
+  h1 em { font-family: var(--font-serif); font-weight: 400; color: var(--color-accent); }
+  .intro { font-size: 15px; line-height: 1.8; color: var(--color-muted); }
+  .meme { width: min(100%, 350px); margin: 30px auto 0; padding: 16px; background: #fffdf8; border: 1px solid var(--color-line); border-radius: 4px; box-shadow: 5px 5px 0 var(--color-surface); }
+  .meme img { display: block; width: 100%; height: auto; background: white; }
+  figcaption { margin-top: 14px; color: var(--color-muted); font: italic 17px/1.5 var(--font-serif); }
+  figcaption span { color: var(--color-accent); margin-left: 5px; }
+  .sendoff { margin: 24px 0 0; font-size: 14px; color: var(--color-muted); }
+  .connection { margin-top: 40px; padding: 28px 0 0; border-top: 1px solid var(--color-line); }
+  h2 { font: italic 23px/1.4 var(--font-serif); letter-spacing: -.02em; }
+  .connection p { margin: 10px auto 0; max-width: 460px; font-size: 13px; line-height: 1.8; color: var(--color-muted); }
+  .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
+  .contact-link { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 46px; max-width: 100%; padding: 10px 16px; border: 1px solid var(--color-line); border-radius: 8px; color: var(--color-brand); background: transparent; font-size: 12px; text-decoration: none; }
+  .contact-link svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .contact-link span { min-width: 0; overflow-wrap: anywhere; }
+  .arrow { color: var(--color-subtle); }
+  .contact-link:hover { background: var(--color-panel); border-color: var(--color-line-strong); }
+  footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 24px; padding: 28px 0; margin-top: 12px; color: var(--color-subtle); font-size: 11px; }
+  .signature { font: italic 17px/1.5 var(--font-serif); color: var(--color-accent); margin-left: 3px; }
+  footer a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }
+  footer a:hover { color: var(--color-accent); text-decoration: underline; }
+  @media (prefers-reduced-motion: no-preference) {
+    .contact-link { transition: background-color .18s ease, border-color .18s ease; }
+  }
+  @media (max-width: 480px) {
+    .page-shell { width: calc(100% - 40px); }
+    main { padding-top: 34px; }
+    .eyebrow { font-size: 9px; letter-spacing: .08em; }
+    .intro { font-size: 13px; }
+    .meme { margin-top: 24px; padding: 12px; }
+    .connection { margin-top: 30px; padding-top: 24px; }
+    h2 { font-size: 21px; }
+    .desktop-break { display: none; }
+    footer { flex-direction: column; padding: 22px 0; }
+  }
+  @media (max-width: 380px) {
+    .page-shell { width: calc(100% - 32px); }
+    .actions { flex-direction: column; }
+    .contact-link { width: 100%; }
+  }
+</style>
